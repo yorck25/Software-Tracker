@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="deu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="res/img/logo.png">
+    <link rel="stylesheet" href="res/css/mainpage.css">
+
+    <script src="res/js/main.js"></script>
+
+    <title>Software tracker</title>
+
+</head>
+<body>
+
+ <!----------Siedebar----------------------->
+
+    <section id="navbar"> 
+        <div class="sidebar">
+
+            <div id="logo">
+                <img src="res/img/logo.png" alt="logo">
+            </div>
+
+            <div class="menu-points">
+                <a href="mainpage.html" ><img src="res/img/icons/align-justify.png" alt="Alle Lizenzen">Lizenzen</a>
+            </div>
+
+            <div class="menu-points">
+                <a href="favorits.html" ><img src="res/img/icons/bookmark.png" alt="Favoriten">Favoriten</a>
+            </div>
+
+            <div class="menu-points ">
+                <a href="settings.html" ><img src="res/img/icons/settings-sliders.png" alt="settings">Bearbeiten</a>
+            </div>
+
+            <div class="menu-points" id="logout">
+                <a href="loginpage.html" ><img src="res/img/icons/sign-out.png" alt="logout">Abmelden</a>
+            </div>
+
+        </div>
+    </section>
+
+     <!----------Main Content----------------------->
+
+    <section class="main-content">
+
+        <div class="headline">
+            <h1 id="title">Alle Lizenzen</h1>
+        </div>
+
+        <div id="category">
+            <button class="switch" id="left_switch"><img src="res/img/icons/winkel-links.png" alt="pfeil links"></button>
+            <input type="text" disabled>
+            <button class="switch" id="right_switch"><img src="res/img/icons/winkel-rechts.png" alt="pfeil rechts"></button>         
+        </div>
+
+        <div class="table">
+            <div>
+                <table id="upper_table">
+                    <thead>
+                        <tr id="head_line">
+                            <th class="row_1_head">Kategorie</th>
+                            <th class="row_2_head">Name</th>
+                            <th class="row_3_head">Start</th>
+                            <th class="row_4_head">Ende</th>
+                            <th class="row_5_head">Restliche Laufzeit</th>
+                            <th class="row_6_head">Information</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div> 
+
+            <div>
+                <table id="body_table">
+                    <tbody>
+                        <tr class="body_table_content">
+                            <th class="row_1_body">Mircosoft</th>
+                            <th class="row_2_body">Windows 10 Pro</th>
+                            <th class="row_3_body">01.01.2022</th>
+                            <th class="row_4_body">31.12.2022</th>
+                            <th class="row_5_body">185</th>
+                            <th class="row_6_body">Für Pascals Pc</th>
+                        </tr>
+
+                        <tr class="body_table_content">
+                            <th class="row_1_body">Adobe</th>
+                            <th class="row_2_body">Cloud Paket 1</th>
+                            <th class="row_3_body">01.01.2022</th>
+                            <th class="row_4_body">31.12.2022</th>
+                            <th class="row_5_body">185</th>
+                            <th class="row_6_body">Beinhaltet Acrobat Pro, Photoshop ,Illustrator, InDesign</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+      
+    </section>
+</body>
+</html>
