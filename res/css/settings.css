@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&family=Dongle:wght@300&family=Inter&family=Lato&family=Nunito:wght@300&family=Outfit:wght@300&display=swap');
+/*font-family: 'Baloo Bhaijaan 2', cursive;*/
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;    
+}
+
+body{
+    background-color: #eceff1;
+    font-family: 'Baloo Bhaijaan 2', cursive;
+}
+
+/*sidebar*/
+
+#navbar{
+    position: absolute;
+    min-height: 94.7%;
+}
+
+.sidebar{
+    width: 210px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 50px;
+    min-height: 100%;
+    position: absolute;
+    float: left;
+
+    border-right-color: rgb(6, 173, 196);
+    border-right-width: 2px;
+    border-right-style: solid;
+}
+
+.menu-points{
+    padding-left: 20px;
+    display: block;
+    margin-top: 25px;
+}
+.sidebar .menu-points img{
+    height: 32px;
+    margin-right: 25px;
+    float: left;
+}
+
+.menu-points a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 26px;
+}
+
+#logout{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 25px;
+}
+
+#logo img{
+    max-width: 165px;
+    padding-left: 20px;
+}
+
+/*main-content*/
+
+.main-content{
+    margin-left: 250px;
+    display: flex;
+    padding-top: 0%;
+    min-height: 100%;
+    min-width: 1000px;
+}
+
+.main-content #title{
+    position: absolute;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(6, 173, 196);
+}
+
+.main-content #title:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
