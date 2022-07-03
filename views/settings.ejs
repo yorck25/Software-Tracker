@@ -1,0 +1,43 @@
+<html lang="de">
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+
+    <%- include("./partials/sidebar.ejs") %>
+
+
+        
+        <section class="main-content">
+            <div class="headline">
+                <h1 id="title">Lizenzen entfernen, hinzufügen oder bearbeiten</h1>
+                <div>
+        
+                    <div class="lower_main_content">
+                        
+                        <div id="left_side_content">
+                            <div id="input_fields">
+
+                                <form class="formElement" action="/mainpage" method="POST">
+                                    <input placeholder="Kategorie: " type="text" id="category" name="category" required>
+                                    <input placeholder="Name: " type="text" id="name" name="name" required>
+                                    <input placeholder="Startpunkt: " type="date" id="start" name="start" requierd>
+                                    <input placeholder="Ablaufsdatum: " type="date" id="end" name="end" requierd>
+                                    <input placeholder="Installationsort: " type="text" id="install" name="install" requierd>
+                                    <input placeholder="Information: " type="text" id="info" name="info">
+                                    <button class="btnSub">Neuen Eintrag hinzufügen</button>
+                                </form>
+                                    
+                            </div>                   
+                        </div>
+                        
+                        <div id="right_side_content">
+
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>     
+        </section>
+</body>
+</html>
