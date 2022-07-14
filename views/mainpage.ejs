@@ -2,6 +2,9 @@
     
     <%- include("./partials/head.ejs") %>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 <body>
 
  <!----------Siedebar----------------------->
@@ -19,7 +22,9 @@
         <div id="category">
             <button class="switch" id="left_switch"><img src="/img/icons/winkel-links.png" alt="pfeil links"></button>
             <input type="text" disabled>
-            <button class="switch" id="right_switch"><img src="/img/icons/winkel-rechts.png" alt="pfeil rechts"></button>         
+            <button class="switch" id="right_switch"><img src="/img/icons/winkel-rechts.png" alt="pfeil rechts"></button>
+            
+            <div><button>Neuen Eintrag erstellen</button></div>
         </div>
 
         <div class="table">
@@ -33,6 +38,7 @@
                             <th class="row_4_head">Ende</th>
                             <th class="row_5_head">Restliche Laufzeit</th>
                             <th class="row_6_head">Information</th>
+                            <th class="row_7_head">Optionen</th>
                         </tr>
                     </thead>
                 </table>
@@ -66,7 +72,8 @@
                                     <td class="row_3_body"><%= startString %></td>
                                     <td class="row_4_body"><%= endString %></td>
                                     <td class="row_5_body"><%= Difference_In_Days %></td>
-                                    <td class="row_6_body"><%= tracker.info %></td>                                    
+                                    <td class="row_6_body"><%= tracker.info %></td>      
+                                    <td class="row_7_head"><button href="/settings">Bearbeiten</button></td>                              
                                 </tr>
                             <% }) %> 
                         <% } %>
@@ -77,5 +84,29 @@
         </div>
       
     </section>
+
+    <a class="trigger_popup_fricc">Click here to show the popup</a>
+    
+    <div class="hover_bkgr_fricc">
+        <span class="helper"></span>
+        <div>
+            <div class="popupCloseButton">&times;</div>
+            <p>Add any HTML content<br />inside the popup box!</p>
+        </div>
+    </div>
+
+    <script>
+        $(window).load(function () {
+                $(".trigger_popup_fricc").click(function () {
+                    $('.hover_bkgr_fricc').show();
+                });
+                $('.hover_bkgr_fricc').click(function () {
+                    $('.hover_bkgr_fricc').hide();
+                });
+                $('.popupCloseButton').click(function () {
+                    $('.hover_bkgr_fricc').hide();
+                });
+            });
+    </script>
 </body>
 </html>
