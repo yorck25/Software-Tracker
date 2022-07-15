@@ -4,7 +4,19 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const trackerRoutes = require('./routes/trackerRoutes')
 
+var livereload = require("livereload");
+var connectLiveReload = require("connect-livereload");
+
+const liveReloadServer = livereload.createServer();
+liveReloadServer.server.once("connection", () => {
+    setTimeout(() => {
+        liveReloadServer.refresh("/");
+    }, 100);
+});
+
 const app = express();
+
+app.use(connectLiveReload());
 
 const dbURI = "mongodb+srv://" + process.env.USER + ":" + process.env.PASS + "@cluster0.aen15qn.mongodb.net/SoftwareTracker?retryWrites=true&w=majority";
 
