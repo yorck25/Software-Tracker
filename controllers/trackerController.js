@@ -32,7 +32,7 @@ const tracker_edit_post = (req, res) => {
     const id = req.params.id;
     Tracker.findByIdAndUpdate(id, req.body)
         .then(result => {
-            res.redirect('/software');
+            res.json({ redirect: '/software' })
         })
         .catch(err => {
             console.log(err);
@@ -54,6 +54,21 @@ const tracker_create = (req, res) => {
     res.render('create')
 }
 
+const tracker_create_post = (req, res) => {
+    const tracker = new Tracker(req.body);
+    tracker.save()
+        .then(result => {
+            res.redirect('/software');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+const test_create = (req, res) => {
+    res.render('create')
+}
+
 
 
 module.exports = {
@@ -64,4 +79,6 @@ module.exports = {
     tracker_edit_post,
     tracker_delete,
     tracker_create,
+    tracker_create_post,
+    test_create,
 }

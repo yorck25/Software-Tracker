@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <form class="formElement" action="/software/<%= tracker._id %>" method="POST">
+    <form class="formElement">
         <% //formating start day to better readable string %>
         <% var d = tracker.start; %>
         <% var startString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
@@ -28,6 +28,19 @@
         <input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>">
         <button class="btnEdit">Eintrag bearbeiten</button>
     </form>
+
+    <script>
+        const sender = document.querySelector('button.btnEdit');
+        sender.addEventListener('click', (e) => {
+            const endpoint = '/software/<%= tracker._id %>';
+            fetch(endpoint, {
+                method: 'POST', 
+            })
+                .then(response => response.json())
+                .then(data => top.location.href = data.redirect)
+                .catch(err => console.log(err));
+        })
+    </script>
 
     <a class="delete" data-doc="<%= tracker._id %>">delete</a>
 
