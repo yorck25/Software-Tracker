@@ -39,10 +39,10 @@ app.use((req, res, next) => {
 
 
 app.get('/', (req, res) => {
-    res.redirect('/mainpage');
+    res.redirect('/software');
 });
 
-app.use('/mainpage', trackerRoutes)
+app.use('', trackerRoutes)
 
 app.use((req, res) => {
     res.status(404).render('404', { title: '404' });

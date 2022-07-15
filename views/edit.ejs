@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <form class="formElement" action="/mainpage/<%= tracker._id %>" method="POST">
+    <form class="formElement" action="/software/<%= tracker._id %>" method="POST">
         <% //formating start day to better readable string %>
         <% var d = tracker.start; %>
         <% var startString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
@@ -34,7 +34,7 @@
     <script>
         const trashcan = document.querySelector('a.delete');
         trashcan.addEventListener('click', (e) => {
-            const endpoint = `/mainpage/${trashcan.dataset.doc}`;
+            const endpoint = `/software/${trashcan.dataset.doc}`;
             fetch(endpoint, {
                 method: 'DELETE',
             })

@@ -3,13 +3,13 @@ const trackerController = require('../controllers/trackerController');
 
 const router = express.Router();
 
-router.get('/favourits', trackerController.tracker_favourits);
-router.get('/settings', trackerController.tracker_settings_get);
-router.get('/', trackerController.tracker_mainpage);
-router.post('/', trackerController.tracker_settings_post);
-router.get('/:id', trackerController.tracker_edit);
-router.delete('/:id', trackerController.tracker_delete);
-router.post('/:id', trackerController.tracker_edit_post);
+router.get('/hardware', trackerController.tracker_hardware);
+router.get('/settings', trackerController.tracker_settings);
+router.get('/software/create', trackerController.tracker_create);
+router.get('/software', trackerController.tracker_software);
+router.get('/software/:id', trackerController.tracker_edit);
+router.delete('/software/:id', trackerController.tracker_delete);
+router.post('/software/:id', trackerController.tracker_edit_post);
 
 
 module.exports = router;
