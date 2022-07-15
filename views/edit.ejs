@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form class="formElement" action="/mainpage" method="POST">
+        <input placeholder="Kategorie: " type="text" id="category" name="category" value="<%= tracker.category %>" required>
+        <input placeholder="Name: " type="text" id="name" name="name" value="<%= tracker.name %>" required>
+        <input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= tracker.start %>" requierd>
+        <input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= tracker.end %>" requierd>
+        <input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>">
+        <button class="btnSub">Eintrag bearbeiten</button>
+    </form>
+    
+</body>
+</html>

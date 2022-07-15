@@ -73,19 +73,10 @@
                                     <td class="row_4_body"><%= endString %></td>
                                     <td class="row_5_body"><%= Difference_In_Days %></td>
                                     <td class="row_6_body"><%= tracker.info %></td>      
-                                    <td class="trigger_popup_fricc"><button><%= tracker._id %></button></td>    
+                                    <td class="trigger_popup_fricc"><a href="/mainpage/<%= tracker._id %>" target="iframe_a">Bearbeiten</a></td>    
                                 </tr>
 
-                            <div class="hover_bkgr_fricc">
-                                <span class="helper"></span>
-                                <div>
-                                    <div class="popupCloseButton">&times;</div>
-                                    <p>Test<br>
-                                        <%= tracker.name %>
-                                        <%= tracker.info %>
-                                    </p>
-                                </div>
-                            </div>
+                            
 
                             <% }) %> 
                         <% } %>
@@ -96,7 +87,19 @@
         </div>
       
     </section>
+
+    <div class="hover_bkgr_fricc">
+        <span class="helper"></span>
+        <div>
+            <div class="popupCloseButton">&times;</div>
+            <p></p>
+            <iframe name="iframe_a" height="300px" width="100%" title="Iframe Example"></iframe>
+        </div>
+    </div>
     
+
+    
+
 
     <script>
         $( window ).on('load', function () {
