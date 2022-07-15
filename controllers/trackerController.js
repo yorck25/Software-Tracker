@@ -50,6 +50,17 @@ const tracker_edit_post = (req, res) => {
         });
 }
 
+const tracker_delete = (req, res) => {
+    const id = req.params.id;
+    Tracker.findByIdAndDelete(id)
+        .then(result => {
+            res.json({ redirect: '/mainpage' });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
 
 
 module.exports = {
@@ -59,4 +70,5 @@ module.exports = {
     tracker_settings_post,
     tracker_edit,
     tracker_edit_post,
+    tracker_delete,
 }

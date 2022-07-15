@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -24,8 +26,26 @@
         <input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= startString %>" requierd>
         <input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>" requierd>
         <input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>">
-        <button class="btnSub">Eintrag bearbeiten</button>
+        <button class="btnEdit">Eintrag bearbeiten</button>
     </form>
+
+    <a class="delete" data-doc="<%= tracker._id %>">delete</a>
+
+    <script>
+        const trashcan = document.querySelector('a.delete');
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = `/mainpage/${trashcan.dataset.doc}`;
+            fetch(endpoint, {
+                method: 'DELETE',
+            })
+                .then(response => response.json())
+                .then(data => top.location.href = data.redirect)
+                .catch(err => console.log(err));
+        });
+
+    </script>
+
+    
     
 </body>
 </html>

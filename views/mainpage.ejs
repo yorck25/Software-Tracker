@@ -4,6 +4,12 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<script type="text/javascript">
+    if (top.location != self.location) {
+        top.location = self.location.href;
+    }
+</script>
+
 
 <body>
 
@@ -73,7 +79,7 @@
                                     <td class="row_4_body"><%= endString %></td>
                                     <td class="row_5_body"><%= Difference_In_Days %></td>
                                     <td class="row_6_body"><%= tracker.info %></td>      
-                                    <td class="trigger_popup_fricc"><a href="/mainpage/<%= tracker._id %>" target="iframe_a">Bearbeiten</a></td>    
+                                    <td class="trigger_popup_fricc"><a href="/mainpage/<%= tracker._id %>" target="iframe_a">Bearbeiten</a></td>
                                 </tr>
 
                             
@@ -98,10 +104,10 @@
     </div>
     
 
-    
-
 
     <script>
+          
+
         $( window ).on('load', function () {
                 $(".trigger_popup_fricc").click(function () {
                     $('.hover_bkgr_fricc').show();
@@ -112,7 +118,12 @@
                 $('.popupCloseButton').click(function () {
                     $('.hover_bkgr_fricc').hide();
                 });
+                $('.btnEdit').click(function () {
+                    $('.hover_bkgr_fricc').hide();
+                });
             });
+
+         
     </script>
 </body>
 </html>
