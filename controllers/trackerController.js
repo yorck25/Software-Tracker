@@ -39,6 +39,17 @@ const tracker_edit = (req, res) => {
             })
 }
 
+const tracker_edit_post = (req, res) => {
+    const id = req.params.id;
+    Tracker.findByIdAndUpdate(id, req.body)
+        .then(result => {
+            res.redirect('/mainpage');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
 
 
 module.exports = {
@@ -47,4 +58,5 @@ module.exports = {
     tracker_mainpage,
     tracker_settings_post,
     tracker_edit,
+    tracker_edit_post,
 }

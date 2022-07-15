@@ -8,11 +8,21 @@
 </head>
 <body>
 
-    <form class="formElement" action="/mainpage" method="POST">
+    <form class="formElement" action="/mainpage/<%= tracker._id %>" method="POST">
+        <% //formating start day to better readable string %>
+        <% var d = tracker.start; %>
+        <% var startString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
+        <% console.log(startString) %>
+        
+        <% //formating end day to better readable string %>
+        <% var d = tracker.end; %>
+        <% var endString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
+        <% console.log(endString) %>
+
         <input placeholder="Kategorie: " type="text" id="category" name="category" value="<%= tracker.category %>" required>
         <input placeholder="Name: " type="text" id="name" name="name" value="<%= tracker.name %>" required>
-        <input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= tracker.start %>" requierd>
-        <input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= tracker.end %>" requierd>
+        <input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= startString %>" requierd>
+        <input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>" requierd>
         <input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>">
         <button class="btnSub">Eintrag bearbeiten</button>
     </form>
