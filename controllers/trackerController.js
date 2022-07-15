@@ -24,7 +24,7 @@ const tracker_edit = (req, res) => {
         Tracker.findById(id)
             .then(result => {
                 console.log(result.name)
-                res.render('edit', { tracker: result })
+                res.render('edit', { title: "Edit", tracker: result })
             })
 }
 
@@ -51,7 +51,7 @@ const tracker_delete = (req, res) => {
 }
 
 const tracker_create = (req, res) => {
-    res.render('create')
+    res.render('create', { title: "Create"})
 }
 
 const tracker_create_post = (req, res) => {
@@ -66,7 +66,7 @@ const tracker_create_post = (req, res) => {
 }
 
 const test_create = (req, res) => {
-    res.render('create')
+    res.render('create', { title: "Create" })
 }
 
 
