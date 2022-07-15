@@ -526,3 +526,11 @@ ul li {
     font-size: 22px;
 }
 
+/*create*/
+
+.create_input{
+    border: 4px;
+    height: 500px;
+    width: 1000px;
+    color: red;
+}
