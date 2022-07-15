@@ -2,19 +2,19 @@
 <html lang="de">
 
     <%- include("./partials/head.ejs") %>
-
+    
 <body>
 
     <form class="formElement" action="/software" method="POST">
-
-        <input placeholder="Kategorie: " type="text" id="category" name="category" required calss="create_input">
-        <input placeholder="Name: " type="text" id="name" name="name" required calss="create_input">
-        <input placeholder="Startpunkt: " type="date" id="start" name="start" requierd calss="create_input">
-        <input placeholder="Ablaufsdatum: " type="date" id="end" name="end" requierd calss="create_input">
-        <input placeholder="Information: " type="text" id="info" name="info" calss="create_input">
-        <button class="btnEdit">Eintrag erstellen</button>
+        <ul>
+            <li><input placeholder="Kategorie: " type="text" name="category" required calss="create_input" class="create_input_category"></li>
+            <li><input placeholder="Name: " type="text" name="name" required calss="create_input" class="create_input_name"></li>
+            <li><input placeholder="Startpunkt: " type="date" id="start" name="start" requierd calss="create_input" class="create_input_date"></li>
+            <li><input placeholder="Ablaufsdatum: " type="date" id="end" name="end" requierd calss="create_input" class="create_input_date"></li>
+            <li><input placeholder="Information: " type="text" id="info" name="info" calss="create_input" class="create_input_information" maxlength="150"></li>
+            <li><button class="btnEdit">Eintrag erstellen</button></li>
+        </ul>
     </form>
-    
-    
+
 </body>
 </html>

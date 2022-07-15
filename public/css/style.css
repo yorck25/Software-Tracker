@@ -528,9 +528,40 @@ ul li {
 
 /*create*/
 
-.create_input{
-    border: 4px;
-    height: 500px;
-    width: 1000px;
-    color: red;
+.formElement input{
+    min-height: 35px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    transition: 0.5s;
+}
+
+.formElement li input:hover{  
+    border-color: #555;  
+}
+
+.create_input_category:hover{
+    width: 200px;
+}
+
+.create_input_name:hover{
+    width: 300px;
+}
+
+.create_input_date{
+    width: 200px;
+}
+
+.create_input_information:hover{
+    border-style: solid;
+}
+
+.create_input_information{
+    display: inline-block;
+    border: solid 1px black;
+    min-width: 50px; 
+    max-width: 200px;
+    min-height: 50px;
 }
