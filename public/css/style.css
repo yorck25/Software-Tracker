@@ -539,23 +539,8 @@ ul li {
 }
 
 .formElement li input:hover{  
-    border-color: #555;  
-}
-
-.create_input_category:hover{
-    width: 200px;
-}
-
-.create_input_name:hover{
-    width: 300px;
-}
-
-.create_input_date{
-    width: 200px;
-}
-
-.create_input_information:hover{
-    border-style: solid;
+    border-color: #555;
+    background-color: #ccc;  
 }
 
 .create_input_information{
