@@ -58,7 +58,7 @@ const tracker_create_post = (req, res) => {
     const tracker = new Tracker(req.body);
     tracker.save()
         .then(result => {
-            res.redirect('/software');
+            res.json({ redirect: '/software' });
         })
         .catch(err => {
             console.log(err);
