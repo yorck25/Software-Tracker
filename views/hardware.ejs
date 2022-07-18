@@ -14,11 +14,8 @@
         </div>
 
         <div id="category">
-            <button class="switch" id="left_switch"><img src="/img/icons/winkel-links.png" alt="pfeil links"></button>
-            <input type="text" disabled>
-            <button class="switch" id="right_switch"><img src="/img/icons/winkel-rechts.png" alt="pfeil rechts"></button>
             
-            <div><button>Neuen Eintrag erstellen</button></div>
+            <div class="trigger_popup_fricc"><a href="/hardware/create" target="iframe_a">Neuen Eintrag erstellen</a></div>
         </div>
 
         <div class="table">
@@ -28,17 +25,83 @@
                         <tr id="head_line">
                             <th class="row_1_head">Kategorie</th>
                             <th class="row_2_head">Name</th>
-                            <th class="row_3_head">Start</th>
-                            <th class="row_4_head">Ende</th>
-                            <th class="row_5_head">Restliche Laufzeit</th>
+                            <th class="row_3_head">Kaufdatum</th>
+                            <th class="row_4_head">Garantie bis</th>
                             <th class="row_6_head">Information</th>
                             <th class="row_7_head">Optionen</th>
                         </tr>
                     </thead>
                 </table>
             </div> 
+
+            <div>
+                <table id="body_table">
+                    <tbody>
+
+                        <% if (trackers.length > 0) { %>
+                            <% trackers.forEach(tracker => { %>
+                                <tr class="body_table_content">
+                                    <% //formating start day to better readable string %>
+                                    <% var d = tracker.buy; %>
+                                    <% var buyString = ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + "." + d.getFullYear(); %>
+                                    <% console.log(buyString) %>
+
+                                    <% //formating end day to better readable string %>
+                                    <% var d = tracker.warrenty; %>
+                                    <% var warrentyString = ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + "." + d.getFullYear(); %>
+                                    <% console.log(warrentyString) %>
+
+                                    <td class="row_1_body"><%= tracker.category %></td>
+                                    <td class="row_2_body"><%= tracker.name %></td>
+                                    <td class="row_3_body"><%= buyString %></td>
+                                    <td class="row_4_body"><%= warrentyString %></td>
+                                    <td class="row_6_body"><%= tracker.info %></td>      
+                                    <td class="trigger_popup_fricc"><a href="/hardware/<%= tracker._id %>" target="iframe_a">Bearbeiten</a></td>
+                                </tr>
+
+                            
+
+                            <% }) %> 
+                        <% } %>
+
+                    </thead>
+                </table>
+            </div>
         </div>
+
+        
+
       
     </section>
+
+    <div class="hover_bkgr_fricc">
+        <span class="helper"></span>
+        <div>
+            <div class="popupCloseButton">&times;</div>
+            <p></p>
+            <iframe name="iframe_a" height="600px" width="100%" title="Iframe Example"></iframe>
+        </div>
+    </div>
+
+    <script>
+
+
+        $(window).on('load', function () {
+            $(".trigger_popup_fricc").click(function () {
+                $('.hover_bkgr_fricc').show();
+            });
+            $('.hover_bkgr_fricc').click(function () {
+                $('.hover_bkgr_fricc').hide();
+            });
+            $('.popupCloseButton').click(function () {
+                $('.hover_bkgr_fricc').hide();
+            });
+            $('.btnEdit').click(function () {
+                $('.hover_bkgr_fricc').hide();
+            });
+        });
+
+
+    </script>
 </body>
 </html>

@@ -1,8 +1,9 @@
-const Tracker = require('../models/tracker');
+const Software = require('../models/software');
+const Hardware = require('../models/hardware');
 
 
 const tracker_software = (req, res) => {
-    Tracker.find().sort({ end: +1 })
+    Software.find().sort({ end: +1 })
         .then(result => {
             console.log(result);
             res.render('software', { title: "Software", trackers: result });
@@ -16,21 +17,34 @@ const tracker_settings = (req, res) => {
 }
 
 const tracker_hardware = (req, res) => {
-    res.render('hardware', {title: "Hardware"})
+    Hardware.find().sort({ warrenty: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('hardware', { title: "Hardware", trackers: result });
+        })
 }
 
-const tracker_edit = (req, res) => {
+const tracker_software_edit = (req, res) => {
     const id = req.params.id;
-        Tracker.findById(id)
+        Software.findById(id)
             .then(result => {
                 console.log(result.name)
-                res.render('edit', { title: "Edit", tracker: result })
+                res.render('software_edit', { title: "Edit", tracker: result })
             })
 }
 
-const tracker_edit_post = (req, res) => {
+const tracker_hardware_edit = (req, res) => {
     const id = req.params.id;
-    Tracker.findByIdAndUpdate(id, req.body)
+    Hardware.findById(id)
+        .then(result => {
+            console.log(result.name)
+            res.render('hardware_edit', { title: "Edit", tracker: result })
+        })
+}
+
+const tracker_software_edit_post = (req, res) => {
+    const id = req.params.id;
+    Software.findByIdAndUpdate(id, req.body)
         .then(result => {
             res.json({ redirect: '/software' })
         })
@@ -39,9 +53,20 @@ const tracker_edit_post = (req, res) => {
         });
 }
 
-const tracker_delete = (req, res) => {
+const tracker_hardware_edit_post = (req, res) => {
     const id = req.params.id;
-    Tracker.findByIdAndDelete(id)
+    Hardware.findByIdAndUpdate(id, req.body)
+        .then(result => {
+            res.json({ redirect: '/hardware' })
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+const tracker_delete_software = (req, res) => {
+    const id = req.params.id;
+    Software.findByIdAndDelete(id)
         .then(result => {
             res.json({ redirect: '/software' });
         })
@@ -50,15 +75,41 @@ const tracker_delete = (req, res) => {
         });
 }
 
-const tracker_create = (req, res) => {
-    res.render('create', { title: "Create"})
+const tracker_delete_hardware = (req, res) => {
+    const id = req.params.id;
+    Hardware.findByIdAndDelete(id)
+        .then(result => {
+            res.json({ redirect: '/hardware' });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
-const tracker_create_post = (req, res) => {
-    const tracker = new Tracker(req.body);
-    tracker.save()
+const tracker_software_create = (req, res) => {
+    res.render('software_create', { title: "Create"})
+}
+
+const tracker_software_create_post = (req, res) => {
+    const software = new Software(req.body);
+    software.save()
         .then(result => {
             res.json({ redirect: '/software' });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+const tracker_hardware_create = (req, res) => {
+    res.render('hardware_create', { title: "Create"})
+}
+
+const tracker_hardware_create_post = (req, res) => {
+    const hardware = new Hardware(req.body);
+    hardware.save()
+        .then(result => {
+            res.json({ redirect: '/hardware' });
         })
         .catch(err => {
             console.log(err);
@@ -66,7 +117,7 @@ const tracker_create_post = (req, res) => {
 }
 
 const test_create = (req, res) => {
-    res.render('create', { title: "Create" })
+    res.render('software_create', { title: "Create" })
 }
 
 const test_edit = (req, res) => {
@@ -79,11 +130,16 @@ module.exports = {
     tracker_hardware,
     tracker_settings,
     tracker_software,
-    tracker_edit,
-    tracker_edit_post,
-    tracker_delete,
-    tracker_create,
-    tracker_create_post,
+    tracker_software_edit,
+    tracker_hardware_edit,
+    tracker_software_edit_post,
+    tracker_hardware_edit_post,
+    tracker_delete_software,
+    tracker_delete_hardware,
+    tracker_software_create,
+    tracker_software_create_post,
+    tracker_hardware_create,
+    tracker_hardware_create_post,
     test_create,
     test_edit,
 }

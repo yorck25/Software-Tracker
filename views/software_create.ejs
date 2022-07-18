@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+
+    <form id="form" class="formElement">
+        <ul>
+            <li><input placeholder="Kategorie: " type="text" name="category" required calss="create_input" class="create_input_category"></li>
+            <li><input placeholder="Name: " type="text" name="name" required calss="create_input" class="create_input_name"></li>
+            <li><input placeholder="Startpunkt: " type="date" id="start" name="start" required calss="create_input"></li>
+            <li><input placeholder="Ablaufsdatum: " type="date" id="end" name="end" requierd calss="create_input"></li>
+            <li><input placeholder="Information: " type="text" id="info" name="info" calss="create_input" class="create_input_information"></li>
+            <a class="btnCreate">Eintrag erstellen</a>
+        </ul>
+    </form>
+
+</body>
+
+<script>
+    const sender = document.querySelector('a.btnCreate');
+    sender.addEventListener('click', (e) => {
+        const endpoint = '/software';
+        console.log(document.getElementsByClassName("formElement"));
+        const data = new URLSearchParams(new FormData(document.getElementById("form")));
+        fetch(endpoint, {
+            method: 'POST',
+            body: data
+        })
+            .then(response => response.json())
+            .then(data => top.location.href = data.redirect)
+            .catch(err => console.log(err));
+    })
+</script>
+
+<script>
+    (function () {
+
+            var min = 100, max = 300, pad_right = 5, input = document.getElementById('info');
+
+            input.style.width = min + 'px';
+            input.onkeypress = input.onkeydown = input.onkeyup = function () {
+                var input = this;
+                setTimeout(function () {
+                    var tmp = document.createElement('div');
+                    tmp.style.padding = '0';
+                    if (getComputedStyle)
+                        tmp.style.cssText = getComputedStyle(input, null).cssText;
+                    if (input.currentStyle)
+                        tmp.style = input.currentStyle;
+                    tmp.style.width = '';
+                    tmp.style.position = 'absolute';
+                    tmp.innerHTML = input.value.replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#039;")
+                        .replace(/ /g, '&nbsp;');
+                    input.parentNode.appendChild(tmp);
+                    var width = tmp.clientWidth + pad_right + 1;
+                    tmp.parentNode.removeChild(tmp);
+                    if (min <= width && width <= max)
+                        input.style.width = width + 'px';
+                }, 1);
+            }
+
+        })();
+</script>
+</html>

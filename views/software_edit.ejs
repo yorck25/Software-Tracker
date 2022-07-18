@@ -21,18 +21,17 @@
         <input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= startString %>" requierd>
         <input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>" requierd>
         <input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>">
-        <button class="btnEdit">Eintrag bearbeiten</button>
+        <a class="btnEdit">Eintrag bearbeiten</a>
     </form>
 
     <script>
-        const sender = document.querySelector('button.btnEdit');
+        const sender = document.querySelector('a.btnEdit');
         sender.addEventListener('click', (e) => {
             const endpoint = '/software/<%= tracker._id %>';
             console.log(document.getElementsByClassName("formElement"));
             const data = new URLSearchParams(new FormData(document.getElementById("form")));
             fetch(endpoint, {
                 method: 'POST', 
-                headers: 'Access-Control-Allow-Origin',
                 body: data
             })
                 .then(response => response.json())

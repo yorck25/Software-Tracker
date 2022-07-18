@@ -10,11 +10,11 @@ const trackerSchema = new Schema({
         type: String,
         required: true,
     },
-    start: {
+    buy: {
         type: Date,
         required: true,
     },
-    end: {
+    warrenty: {
         type: Date,
         required: true,
     },
@@ -24,5 +24,5 @@ const trackerSchema = new Schema({
     },
 });
 
-const Tracker = mongoose.model('Tracker', trackerSchema);
-module.exports = Tracker;
+const Hardware = mongoose.model('Hardware', trackerSchema);
+module.exports = Hardware;
