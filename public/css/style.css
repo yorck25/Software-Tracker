@@ -233,7 +233,7 @@ body {
     transition: 0.2s;
 }
 
-#category {
+#category_head{
     background-color: rgb(255, 255, 255);
     position: absolute;
     margin-top: 100px;
@@ -555,7 +555,9 @@ ul li {
 
 .formElement ul {
     display: block;
+    margin-left: 50px;
 }
+
 
 .formElementedit input{
     min-height: 35px;
@@ -573,7 +575,7 @@ ul li {
 }
 
 .edit_input_information{
-    display: block;
+    display: inline-block;
     border: solid 1px black;
     min-width: 50px; 
     max-width: 200px;
@@ -581,13 +583,7 @@ ul li {
 }
 
 .delete {
-    min-height: 40px;
-    border-radius: 10px;
-    margin: 10px;
-    width: 150px;
-    border-style: solid;
-    border-color: rgb(99, 99, 99);
-    transition: 0.5s;
+    margin-left: 10px;
 }
 
 .btnEdit{
