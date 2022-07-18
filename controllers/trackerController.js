@@ -69,6 +69,10 @@ const test_create = (req, res) => {
     res.render('create', { title: "Create" })
 }
 
+const test_edit = (req, res) => {
+    res.render('edit', { title: "Edit" })
+}
+
 
 
 module.exports = {
@@ -81,4 +85,5 @@ module.exports = {
     tracker_create,
     tracker_create_post,
     test_create,
+    test_edit,
 }

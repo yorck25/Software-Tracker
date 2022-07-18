@@ -28,11 +28,11 @@
         const sender = document.querySelector('button.btnEdit');
         sender.addEventListener('click', (e) => {
             const endpoint = '/software/<%= tracker._id %>';
-            console.log("testg")
             console.log(document.getElementsByClassName("formElement"));
             const data = new URLSearchParams(new FormData(document.getElementById("form")));
             fetch(endpoint, {
                 method: 'POST', 
+                headers: 'Access-Control-Allow-Origin',
                 body: data
             })
                 .then(response => response.json())

@@ -12,6 +12,7 @@ router.post('/software', trackerController.tracker_create_post)
 router.post('/software/:id', trackerController.tracker_edit_post);
 router.delete('/software/:id', trackerController.tracker_delete);
 router.get('/test/create', trackerController.test_create)
+router.get('/test/edit', trackerController.test_edit);
 
 
 module.exports = router;
