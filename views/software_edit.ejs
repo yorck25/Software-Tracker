@@ -23,10 +23,13 @@
             <li><input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= startString %>" calss="edit_input" requierd class="edit_input"></li>    
             <li><input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>"  calss="edit_input" requierd class="edit_input"></li>   
             <li><input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>" calss="edit_input" required class="edit_input_information"></li>   
-            <li><a class="btnEdit">Eintrag bearbeiten</a></li>
-            <li>
-                <a class="delete" data-doc="<%= tracker._id %>"><img alt="delete" src="/public/img/icons/delete.png"></a>
+            <li class="optionFields">
+                <td>
+                    <a class="btnEdit"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a>
+                    <a class="delete" data-doc="<%= tracker._id %>"><img alt="delete" src="/img/icons/mull.png"></a>
+                </td>
             </li>
+
                 
         </ul>
     </form>

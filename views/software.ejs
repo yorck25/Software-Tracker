@@ -27,8 +27,9 @@
 
         <div id="category_head">
             
-            <div class="trigger_popup_fricc"><a href="/software/create" target="iframe_a">
-                <img src="/create.png" >Neuen Eintrag erstellen</a>
+            <div class="trigger_popup_fricc">
+                <img class="create_logo" src="/img/icons/create.png">
+                <a href="/software/create" target="iframe_a">Neuen Eintrag erstellen</a>
             </div>
         </div>
 
@@ -78,7 +79,7 @@
                                     <td class="row_4_body"><%= endString %></td>
                                     <td class="row_5_body"><%= Difference_In_Days %></td>
                                     <td class="row_6_body"><%= tracker.info %></td>      
-                                    <td id="row_7body"class="trigger_popup_fricc"><a href="/software/<%= tracker._id %>" target="iframe_a"><img src="bearbeiten.png" alt="Bearebietn"></a></td>
+                                    <td id="row_7body"class="trigger_popup_fricc"><a href="/software/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearebietn"></a></td>
                                 </tr>
 
                             
