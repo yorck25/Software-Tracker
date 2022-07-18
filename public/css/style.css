@@ -115,7 +115,7 @@ body {
     color: white;
 }
 
-#name {
+#login-name {
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -526,7 +526,7 @@ ul li {
     font-size: 22px;
 }
 
-/*create*/
+/*---------------------------create-PopUp------------------*/
 
 .formElement input{
     min-height: 35px;
@@ -549,4 +549,58 @@ ul li {
     min-width: 50px; 
     max-width: 200px;
     min-height: 50px;
+}
+
+/*---------------------------edit-PopUp------------------*/
+
+.formElement ul {
+    display: block;
+}
+
+.formElementedit input{
+    min-height: 35px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    transition: 0.5s;
+}
+
+.formElement input:hover{  
+    border-color: #555;
+    background-color: #ccc;  
+}
+
+.edit_input_information{
+    display: block;
+    border: solid 1px black;
+    min-width: 50px; 
+    max-width: 200px;
+    min-height: 50px;
+}
+
+.delete {
+    min-height: 40px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    transition: 0.5s;
+}
+
+.btnEdit{
+    min-height: 40px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    transition: 0.5s;
+}
+
+.btnEdit:hover{
+    border-color: #555;
+    background-color: #ccc;  
 }
