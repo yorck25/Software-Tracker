@@ -3,7 +3,7 @@
 
     <%- include("./partials/head.ejs") %>
 
-<body>
+<body id="edit-page">
 
     <form id="form" class="formElement">
         <% //formating start day to better readable string %>
@@ -16,12 +16,19 @@
         <% var endString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
         <% console.log(endString) %>
 
-        <input placeholder="Kategorie: " type="text" id="category" name="category" value="<%= tracker.category %>" required>
-        <input placeholder="Name: " type="text" id="name" name="name" value="<%= tracker.name %>" required>
-        <input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= startString %>" requierd>
-        <input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>" requierd>
-        <input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>">
-        <a class="btnEdit">Eintrag bearbeiten</a>
+        <ul id="edit_form" class="formElement">
+                   
+            <li><input placeholder="Kategorie: " type="text" name="category" value="<%= tracker.category %>" calss="edit_input" required class="edit_input_category"></li>
+            <li><input placeholder="Name: " type="text" name="name" value="<%= tracker.name %>" calss="edit_input" required class="edit_input_name"></li>   
+            <li><input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= startString %>" calss="edit_input" requierd class="edit_input"></li>    
+            <li><input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>"  calss="edit_input" requierd class="edit_input"></li>   
+            <li><input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>" calss="edit_input" required class="edit_input_information"></li>   
+            <li><button class="btnEdit">Eintrag bearbeiten</button></li>
+            <li>
+                <a class="delete" data-doc="<%= tracker._id %>"><img alt="delete" src="/public/img/icons/delete.png"></a>
+            </li>
+                
+        </ul>
     </form>
 
     <script>
@@ -40,7 +47,6 @@
         })
     </script>
 
-    <a class="delete" data-doc="<%= tracker._id %>">delete</a>
 
     <script>
         const trashcan = document.querySelector('a.delete');

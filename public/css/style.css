@@ -115,7 +115,7 @@ body {
     color: white;
 }
 
-#name {
+#login-name {
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -233,7 +233,7 @@ body {
     transition: 0.2s;
 }
 
-#category {
+#category_head{
     background-color: rgb(255, 255, 255);
     position: absolute;
     margin-top: 100px;
@@ -244,7 +244,7 @@ body {
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
 }
 
-#category img {
+.category img {
     height: 26px;
 }
 
@@ -365,6 +365,12 @@ body {
     border-color: #e4e4e4;
 }
 
+#row_7body{
+    border-bottom-style: solid;
+    border-color: #e4e4e4;
+    border-width: 1, 25px;
+    width: 100px;
+}
 
 /*popup*/
 
@@ -526,7 +532,7 @@ ul li {
     font-size: 22px;
 }
 
-/*create*/
+/*---------------------------create-PopUp------------------*/
 
 .formElement input{
     min-height: 35px;
@@ -549,4 +555,74 @@ ul li {
     min-width: 50px; 
     max-width: 200px;
     min-height: 50px;
+}
+
+.btnCreate{
+    min-height: 40px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    transition: 0.5s;
+}
+
+.btnCreate:hover{
+    border-color: #555;
+    background-color: #ccc;  
+}
+
+
+/*---------------------------edit-PopUp------------------*/
+
+.formElement ul {
+    display: block;
+    margin-left: 50px;
+}
+
+
+.formElementedit input{
+    min-height: 35px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    transition: 0.5s;
+}
+
+.formElement input:hover{  
+    border-color: #555;
+    background-color: #ccc;  
+}
+
+.edit_input_information{
+    display: inline-block;
+    border: solid 1px black;
+    min-width: 50px; 
+    max-width: 200px;
+    min-height: 50px;
+}
+
+.delete {
+    margin-left: 10px;
+}
+
+.btnEdit{
+    min-height: 40px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    transition: 0.5s;
+}
+
+.btnEdit:hover{
+    border-color: #555;
+    background-color: #ccc;  
+}
+
+.formElement ul li{
+    max-height: 500px;
 }
