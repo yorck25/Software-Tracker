@@ -3,7 +3,7 @@
 
     <%- include("./partials/head.ejs") %>
 
-<body>
+<body id="edit-page">
 
     <form id="form" class="formElement">
         <% //formating start day to better readable string %>
@@ -24,7 +24,10 @@
             <li><input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>"  calss="edit_input" requierd class="edit_input"></li>   
             <li><input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>" calss="edit_input" required class="edit_input_information"></li>   
             <li><button class="btnEdit">Eintrag bearbeiten</button></li>
-            <a class="delete" data-doc="<%= tracker._id %>"><img alt="delete" src="/public/img/icons/delete.png"></a>
+            <li>
+                <a class="delete" data-doc="<%= tracker._id %>"><img alt="delete" src="/public/img/icons/delete.png"></a>
+            </li>
+                
         </ul>
     </form>
 

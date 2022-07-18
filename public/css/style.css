@@ -244,7 +244,7 @@ body {
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
 }
 
-#category img {
+.category img {
     height: 26px;
 }
 
@@ -551,6 +551,22 @@ ul li {
     min-height: 50px;
 }
 
+.btnCreate{
+    min-height: 40px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    transition: 0.5s;
+}
+
+.btnCreate:hover{
+    border-color: #555;
+    background-color: #ccc;  
+}
+
+
 /*---------------------------edit-PopUp------------------*/
 
 .formElement ul {
@@ -599,4 +615,8 @@ ul li {
 .btnEdit:hover{
     border-color: #555;
     background-color: #ccc;  
+}
+
+.formElement ul li{
+    max-height: 500px;
 }
