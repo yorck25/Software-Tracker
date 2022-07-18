@@ -70,7 +70,7 @@ const test_create = (req, res) => {
 }
 
 const test_edit = (req, res) => {
-    res.render('edit', { title: "Edit", tracker: result })
+    res.render('edit1', { title: "Edit"})
 }
 
 
