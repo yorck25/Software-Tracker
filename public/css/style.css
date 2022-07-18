@@ -365,6 +365,12 @@ body {
     border-color: #e4e4e4;
 }
 
+#row_7body{
+    border-bottom-style: solid;
+    border-color: #e4e4e4;
+    border-width: 1, 25px;
+    width: 100px;
+}
 
 /*popup*/
 
