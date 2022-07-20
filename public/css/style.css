@@ -222,6 +222,10 @@ body {
     min-width: 1000px;
 }
 
+.create_logo{
+    height: 50px;
+    width: 50px;
+}
 .main-content #title {
     position: absolute;
     border-bottom-style: solid;
@@ -236,39 +240,37 @@ body {
 #category_head{
     background-color: rgb(255, 255, 255);
     position: absolute;
-    margin-top: 100px;
+    margin-top: 90px;
     width: 1600px;
-
+    max-height: 80px;
+    
     -webkit-box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
     -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
 }
 
-.category img {
-    height: 26px;
+#category_head a{
+    text-decoration: none;
+    margin-left: 80px;
+    font-size: 26px;
+    font-style: bold;
+    color: rgb(39, 39, 39);
 }
 
-#category input {
-    height: 32px;
-    position: fixed;
-    margin-top: 5px;
+#category_head img{
+    position: absolute;
+    height: 75px;
+    width: auto;
+    margin-top: -20px;
 }
 
-#category .switch {
-    margin-top: 8px;
-    height: 32px;
-    border-radius: 100px;
-    border-style: none;
-    background-color: rgb(255, 255, 255);
-    transition: 0.4s;
+#category_head a:hover{
+    text-decoration: underline;
 }
 
-#category .switch:hover {
-    background-color: #c9c9c9;
-}
-
-#category #right_switch {
-    margin-left: 180px;
+#category_head img:hover{
+    height: 75.5px;
+    width: auto;
 }
 
 .table {
@@ -312,6 +314,7 @@ body {
 
 .row_5_head {
     width: 250px;
+    float: left;
 }
 
 .row_6_head {
@@ -366,10 +369,21 @@ body {
 }
 
 #row_7body{
-    border-bottom-style: solid;
-    border-color: #e4e4e4;
-    border-width: 1, 25px;
+    padding-bottom: 10px;
     width: 100px;
+    float: right;
+    margin-right: -45px;
+}
+
+#row_7body img{
+    height: 50px;
+    width: auto;
+}
+
+#row_7body img:hover{
+    position: relative;
+    background-color: rgb(221, 221, 221);
+    width: auto;
 }
 
 /*popup*/
@@ -604,23 +618,27 @@ ul li {
     min-height: 50px;
 }
 
-.delete {
-    margin-left: 10px;
+.delete{
+    padding: 0%;
 }
 
-.btnEdit{
-    min-height: 40px;
-    border-radius: 10px;
-    margin: 10px;
-    width: 150px;
-    border-style: solid;
-    border-color: rgb(99, 99, 99);
-    transition: 0.5s;
+.delete img{
+    height: 100px;
+    width: auto;
+    margin-left: 50px;
+    padding: 0%;
 }
 
-.btnEdit:hover{
-    border-color: #555;
-    background-color: #ccc;  
+.btnEdit img{
+    height: 80px;
+    width: auto;
+    margin-bottom: 5px;
+}
+
+.optionField{
+    position: relative;
+    padding: 0%;
+    margin-left: 50px;
 }
 
 .formElement ul li{
