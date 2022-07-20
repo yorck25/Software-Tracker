@@ -54,13 +54,15 @@
     <script>
         const trashcan = document.querySelector('a.delete');
         trashcan.addEventListener('click', (e) => {
-            const endpoint = `/software/${trashcan.dataset.doc}`;
-            fetch(endpoint, {
-                method: 'DELETE',
-            })
-                .then(response => response.json())
-                .then(data => top.location.href = data.redirect)
-                .catch(err => console.log(err));
+            if (confirm("Diesen Eintrag wirklich löschen?")) {
+                const endpoint = `/software/${trashcan.dataset.doc}`;
+                fetch(endpoint, {
+                    method: 'DELETE',
+                })
+                    .then(response => response.json())
+                    .then(data => top.location.href = data.redirect)
+                    .catch(err => console.log(err));
+            }
         });
 
     </script>
