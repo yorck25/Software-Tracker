@@ -25,7 +25,7 @@
             <li><input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>" calss="edit_input" required class="edit_input_information"></li>   
             <li><a class="btnEdit">Eintrag bearbeiten</a></li>
             <li>
-                <a class="delete" data-doc="<%= tracker._id %>"><img alt="delete" src="/img/icons/delete.png"></a>
+                <a class="delete" onclick="ask()" data-doc="<%= tracker._id %>"><img alt="delete" src="/img/icons/delete.png"></a>
             </li>
                 
         </ul>
@@ -51,13 +51,15 @@
     <script>
         const trashcan = document.querySelector('a.delete');
         trashcan.addEventListener('click', (e) => {
-            const endpoint = `/software/${trashcan.dataset.doc}`;
-            fetch(endpoint, {
-                method: 'DELETE',
-            })
-                .then(response => response.json())
-                .then(data => top.location.href = data.redirect)
-                .catch(err => console.log(err));
+            if (confirm("Diesen Eintrag wirklich löschen?")) {
+                const endpoint = `/software/${trashcan.dataset.doc}`;
+                fetch(endpoint, {
+                    method: 'DELETE',
+                })
+                    .then(response => response.json())
+                    .then(data => top.location.href = data.redirect)
+                    .catch(err => console.log(err));
+            }
         });
 
     </script>
