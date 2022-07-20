@@ -1,0 +1,129 @@
+<html lang="de">
+    
+    <%- include("./partials/head.ejs") %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    if (top.location != self.location) {
+        top.location = self.location.href;
+    }
+</script>
+
+
+<body>
+
+ <!----------Siedebar----------------------->
+
+    <%- include("./partials/sidebar.ejs") %>
+
+     <!----------Main Content----------------------->
+
+    <section class="main-content">
+
+        <div class="headline">
+            <h1 id="title">Software</h1>
+        </div>
+
+        <div id="category">
+            <button class="switch" id="left_switch"><img src="/img/icons/winkel-links.png" alt="pfeil links"></button>
+            <input type="text" disabled>
+            <button class="switch" id="right_switch"><img src="/img/icons/winkel-rechts.png" alt="pfeil rechts"></button>
+            
+            <div><button>Neuen Eintrag erstellen</button></div>
+        </div>
+
+        <div class="table">
+            <div>
+                <table id="upper_table">
+                    <thead>
+                        <tr id="head_line">
+                            <th class="row_1_head">Kategorie</th>
+                            <th class="row_2_head">Name</th>
+                            <th class="row_3_head">Start</th>
+                            <th class="row_4_head">Ende</th>
+                            <th class="row_5_head">Restliche Laufzeit</th>
+                            <th class="row_6_head">Information</th>
+                            <th class="row_7_head">Optionen</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div> 
+
+            <div>
+                <table id="body_table">
+                    <tbody>
+
+                        <% if (trackers.length > 0) { %>
+                            <% trackers.forEach(tracker => { %>
+                                <tr class="body_table_content">
+                                    <% //formating start day to better readable string %>
+                                    <% var d = tracker.start; %>
+                                    <% var startString = ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + "." + d.getFullYear(); %>
+                                    <% console.log(startString) %>
+
+                                    <% //formating end day to better readable string %>
+                                    <% var d = tracker.end; %>
+                                    <% var endString = ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + "." + d.getFullYear(); %>
+                                    <% console.log(endString) %>
+
+                                    <% //Calculation the diffeence between start day and end day %>
+                                    <% let date1 = new Date(tracker.start); %>
+                                    <% let date2 = new Date(tracker.end); %>
+                                    <% let Difference_In_Time = date2.getTime() - date1.getTime(); %>
+                                    <% let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); %>
+
+                                    <td class="row_1_body"><%= tracker.category %></td>
+                                    <td class="row_2_body"><%= tracker.name %></td>
+                                    <td class="row_3_body"><%= startString %></td>
+                                    <td class="row_4_body"><%= endString %></td>
+                                    <td class="row_5_body"><%= Difference_In_Days %></td>
+                                    <td class="row_6_body"><%= tracker.info %></td>      
+                                    <td class="trigger_popup_fricc"><a href="/mainpage/<%= tracker._id %>" target="iframe_a">Bearbeiten</a></td>
+                                </tr>
+
+                            
+
+                            <% }) %> 
+                        <% } %>
+
+                    </thead>
+                </table>
+            </div>
+        </div>
+      
+    </section>
+
+    <div class="hover_bkgr_fricc">
+        <span class="helper"></span>
+        <div>
+            <div class="popupCloseButton">&times;</div>
+            <p></p>
+            <iframe name="iframe_a" height="300px" width="100%" title="Iframe Example"></iframe>
+        </div>
+    </div>
+    
+
+
+    <script>
+          
+
+        $( window ).on('load', function () {
+                $(".trigger_popup_fricc").click(function () {
+                    $('.hover_bkgr_fricc').show();
+                });
+                $('.hover_bkgr_fricc').click(function () {
+                    $('.hover_bkgr_fricc').hide();
+                });
+                $('.popupCloseButton').click(function () {
+                    $('.hover_bkgr_fricc').hide();
+                });
+                $('.btnEdit').click(function () {
+                    $('.hover_bkgr_fricc').hide();
+                });
+            });
+
+         
+    </script>
+</body>
+</html>

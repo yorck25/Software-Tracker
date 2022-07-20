@@ -1,0 +1,44 @@
+<html lang="de">
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+
+    <%- include("./partials/sidebar.ejs") %>
+
+
+    <section class="main-content">
+
+        <div class="headline">
+            <h1 id="title">Hardware</h1>
+        </div>
+
+        <div id="category">
+            <button class="switch" id="left_switch"><img src="/img/icons/winkel-links.png" alt="pfeil links"></button>
+            <input type="text" disabled>
+            <button class="switch" id="right_switch"><img src="/img/icons/winkel-rechts.png" alt="pfeil rechts"></button>
+            
+            <div><button>Neuen Eintrag erstellen</button></div>
+        </div>
+
+        <div class="table">
+            <div>
+                <table id="upper_table">
+                    <thead>
+                        <tr id="head_line">
+                            <th class="row_1_head">Kategorie</th>
+                            <th class="row_2_head">Name</th>
+                            <th class="row_3_head">Start</th>
+                            <th class="row_4_head">Ende</th>
+                            <th class="row_5_head">Restliche Laufzeit</th>
+                            <th class="row_6_head">Information</th>
+                            <th class="row_7_head">Optionen</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div> 
+        </div>
+      
+    </section>
+</body>
+</html>
