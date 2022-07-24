@@ -3,6 +3,9 @@ const trackerController = require('../controllers/trackerController');
 
 const router = express.Router();
 
+router.get('/login', trackerController.login)
+router.get('/user', trackerController.userLog)
+router.get('/register', trackerController.register)
 router.get('/software', trackerController.tracker_software);
 router.get('/hardware', trackerController.tracker_hardware);
 router.get('/settings', trackerController.tracker_settings);

@@ -1,8 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+var cookieParser = require('cookie-parser')
 require('dotenv').config();
-const trackerRoutes = require('./routes/trackerRoutes')
+const trackerRoutes = require('./routes/trackerRoutes');
+const cors = require('cors')
+var corsOptions = {
+    origin: "http://localhost:8081"
+};
 
 var livereload = require("livereload");
 var connectLiveReload = require("connect-livereload");
@@ -18,17 +23,12 @@ const app = express();
 
 app.use(connectLiveReload());
 
-const dbURI = "mongodb+srv://" + process.env.USER + ":" + process.env.PASS + "@cluster0.aen15qn.mongodb.net/SoftwareTracker?retryWrites=true&w=majority";
-
-
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(result => app.listen(3000))
-    .catch(err => console.log(err));
-
 app.set('view engine', 'ejs');
 
-console.log("Listining on port 3000")
+app.use(cookieParser())
 
+app.use(cors(corsOptions));
+app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
@@ -36,6 +36,25 @@ app.use((req, res, next) => {
     res.locals.path = req.path;
     next();
 });
+
+const db = require('./models');
+const dbConfig = require('./config/db.config');
+db.mongoose
+    .connect(`mongodb+srv://${dbConfig.USER}:${dbConfig.PASS}@${dbConfig.DB}`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+        console.log("Connected");
+    })
+    .catch(err => {
+        console.error("Connection error", err);
+        process.exit();
+    });
+
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
+
 
 
 app.get('/', (req, res) => {
@@ -46,4 +65,9 @@ app.use('', trackerRoutes)
 
 app.use((req, res) => {
     res.status(404).render('404', { title: '404' });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
 });

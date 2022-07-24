@@ -124,6 +124,17 @@ const test_edit = (req, res) => {
     res.render('edit1', { title: "Edit"})
 }
 
+const login = (req, res) => {
+    res.render('login', { title: 'Login' })
+}
+
+const register = (req, res) => {
+    res.render('register', { title: 'Registrieren', message: "" })
+}
+
+const userLog = (req, res) => {
+    res.render('user')
+}
 
 
 module.exports = {
@@ -142,4 +153,7 @@ module.exports = {
     tracker_hardware_create_post,
     test_create,
     test_edit,
+    login,
+    register,
+    userLog,
 }
