@@ -3,7 +3,7 @@
 
     <%- include("./partials/head.ejs") %>
 
-<body>
+<body style="background-color: #fff;" id="edit-page">
 
     <form id="form" class="formElement">
         <% //formating start day to better readable string %>
@@ -16,12 +16,21 @@
         <% var warrentyString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
         <% console.log(warrentyString) %>
 
-        <input placeholder="Kategorie: " type="text" id="category" name="category" value="<%= tracker.category %>" required>
-        <input placeholder="Name: " type="text" id="name" name="name" value="<%= tracker.name %>" required>
-        <input placeholder="Kaufdatum: " type="date" id="start" name="start" value="<%= buyString %>" requierd>
-        <input placeholder="Garantie bis: " type="date" id="end" name="end" value="<%= warrentyString %>" requierd>
-        <input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>">
-        <a class="btnEdit">Eintrag bearbeiten</a>
+        <ul id="edit_form" class="formElement">
+
+            <li><input placeholder="Kategorie: " type="text" id="category" name="category" value="<%= tracker.category %>" required></li>
+            <li><input placeholder="Name: " type="text" id="name" name="name" value="<%= tracker.name %>" required></li>
+            <li><input placeholder="Kaufdatum: " type="date" id="start" name="start" value="<%= buyString %>" requierd></li>
+            <li><input placeholder="Garantie bis: " type="date" id="end" name="end" value="<%= warrentyString %>" requierd></li>
+            <li><input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>"></li>
+            <li class="optionFields">
+                <td>
+                    <a class="btnEdit"><img alt="edit" src="/img/icons/bearbeiten.png">Eintrag bearbeiten und speichern</a>
+                    <a class="delete" data-doc="<%= tracker._id %>"><img alt="delete" src="/img/icons/mull.png">Eintrag löschen</a>
+                </td>
+            </li>
+
+        </ul>
     </form>
 
     <script>
@@ -40,7 +49,6 @@
         })
     </script>
 
-    <a class="delete" data-doc="<%= tracker._id %>">delete</a>
 
     <script>
         const trashcan = document.querySelector('a.delete');

@@ -2,6 +2,14 @@
 
     <%- include("./partials/head.ejs") %>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        if (top.location != self.location) {
+            top.location = self.location.href;
+        }
+    </script>
+
 <body>
 
     <%- include("./partials/sidebar.ejs") %>
@@ -13,9 +21,12 @@
             <h1 id="title">Hardware</h1>
         </div>
 
-        <div id="category">
+        <div id="category_head">
             
-            <div class="trigger_popup_fricc"><a href="/hardware/create" target="iframe_a">Neuen Eintrag erstellen</a></div>
+            <div class="trigger_popup_fricc">
+                <img class="create_logo" src="/img/icons/create.png">
+                <a href="/hardware/create" target="iframe_a">Neuen Eintrag erstellen</a>
+            </div>
         </div>
 
         <div class="table">
@@ -23,12 +34,12 @@
                 <table id="upper_table">
                     <thead>
                         <tr id="head_line">
-                            <th class="row_1_head">Kategorie</th>
-                            <th class="row_2_head">Name</th>
-                            <th class="row_3_head">Kaufdatum</th>
-                            <th class="row_4_head">Garantie bis</th>
-                            <th class="row_6_head">Information</th>
-                            <th class="row_7_head">Optionen</th>
+                            <th class="row_1_head"><a href="/hardware.category">Kategorie</a></th>
+                            <th class="row_2_head"><a href="/hardware.name">Name</a></th>
+                            <th class="row_3_head"><a href="/hardware.buy">Kaufdatum</a></th>
+                            <th class="row_4_head"><a href="/hardware.warrenty">Garantie bis</a></th>
+                            <th class="row_6_head_hardware">Information</th>
+                            <th class="row_7_head_hardware">Optionen</th>
                         </tr>
                     </thead>
                 </table>
@@ -55,8 +66,8 @@
                                     <td class="row_2_body"><%= tracker.name %></td>
                                     <td class="row_3_body"><%= buyString %></td>
                                     <td class="row_4_body"><%= warrentyString %></td>
-                                    <td class="row_6_body"><%= tracker.info %></td>      
-                                    <td class="trigger_popup_fricc"><a href="/hardware/<%= tracker._id %>" target="iframe_a">Bearbeiten</a></td>
+                                    <td class="row_6_body_hardware"><%= tracker.info %></td>      
+                                    <td id="row_7body_hardware" class="trigger_popup_fricc"><a href="/hardware/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
                                 </tr>
 
                             
@@ -76,10 +87,10 @@
 
     <div class="hover_bkgr_fricc">
         <span class="helper"></span>
-        <div>
+        <div class="popup-frame">
             <div class="popupCloseButton">&times;</div>
             <p></p>
-            <iframe name="iframe_a" height="600px" width="100%" title="Iframe Example"></iframe>
+            <iframe name="iframe_a" height="600px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
         </div>
     </div>
 
