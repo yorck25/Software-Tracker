@@ -10,6 +10,37 @@ const tracker_software = (req, res) => {
         })
 }
 
+const tracker_software_category = (req, res) => {
+    Software.find().sort({category: -1 })
+        .then(result => {
+            console.log(result);
+            res.render('software', { title: "Software", trackers: result });
+        })
+}
+
+const tracker_software_name = (req, res) => {
+    Software.find().sort({ name: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('software', { title: "Software", trackers: result });
+        })
+}
+
+const tracker_software_start = (req, res) => {
+    Software.find().sort({ start: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('software', { title: "Software", trackers: result });
+        })
+}
+
+const tracker_software_end = (req, res) => {
+    Software.find().sort({ end: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('software', { title: "Software", trackers: result });
+        })
+}
 
 
 const tracker_settings = (req, res) => {
@@ -17,6 +48,38 @@ const tracker_settings = (req, res) => {
 }
 
 const tracker_hardware = (req, res) => {
+    Hardware.find().sort({ warrenty: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('hardware', { title: "Hardware", trackers: result });
+        })
+}
+
+const tracker_hardware_category = (req, res) => {
+    Hardware.find().sort({ category: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('hardware', { title: "Hardware", trackers: result });
+        })
+}
+
+const tracker_hardware_name = (req, res) => {
+    Hardware.find().sort({ name: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('hardware', { title: "Hardware", trackers: result });
+        })
+}
+
+const tracker_hardware_buy = (req, res) => {
+    Hardware.find().sort({ buy: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('hardware', { title: "Hardware", trackers: result });
+        })
+}
+
+const tracker_hardware_warrenty = (req, res) => {
     Hardware.find().sort({ warrenty: +1 })
         .then(result => {
             console.log(result);
@@ -139,8 +202,16 @@ const userLog = (req, res) => {
 
 module.exports = {
     tracker_hardware,
+    tracker_hardware_category,
+    tracker_hardware_name,
+    tracker_hardware_buy,
+    tracker_hardware_warrenty,
     tracker_settings,
     tracker_software,
+    tracker_software_category,
+    tracker_software_name,
+    tracker_software_start,
+    tracker_software_end,
     tracker_software_edit,
     tracker_hardware_edit,
     tracker_software_edit_post,
