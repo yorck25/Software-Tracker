@@ -33,6 +33,7 @@ module.exports = function (app) {
     app.post('/hardware/:id', [authJwt.verifyToken], trackerController.tracker_hardware_edit_post);
     app.delete('/software/:id', [authJwt.verifyToken], trackerController.tracker_delete_software);
     app.delete('/hardware/:id', [authJwt.verifyToken], trackerController.tracker_delete_hardware);
+    app.delete('/settings/:id', [authJwt.verifyToken], trackerController.tracker_delete_settings);
     app.get('/test/create', [authJwt.verifyToken], trackerController.test_create)
     app.get('/test/edit', [authJwt.verifyToken], trackerController.test_edit);
 

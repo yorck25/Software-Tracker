@@ -1,5 +1,6 @@
 const Software = require('../models/software');
 const Hardware = require('../models/hardware');
+const User = require('../models/user.models');
 
 
 const tracker_software = (req, res) => {
@@ -44,7 +45,11 @@ const tracker_software_end = (req, res) => {
 
 
 const tracker_settings = (req, res) => {
-    res.render('settings', {title: "Settings"})
+    User.find().sort({ username: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('settings', { title: "Settings", users: result })
+        })
 }
 
 const tracker_hardware = (req, res) => {
@@ -149,6 +154,17 @@ const tracker_delete_hardware = (req, res) => {
         });
 }
 
+const tracker_delete_settings = (req, res) => {
+    const id = req.params.id;
+    User.findByIdAndDelete(id)
+        .then(result => {
+            res.json({ redirect: '/settings' });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
 const tracker_software_create = (req, res) => {
     res.render('software_create', { title: "Create"})
 }
@@ -218,6 +234,7 @@ module.exports = {
     tracker_hardware_edit_post,
     tracker_delete_software,
     tracker_delete_hardware,
+    tracker_delete_settings,
     tracker_software_create,
     tracker_software_create_post,
     tracker_hardware_create,
