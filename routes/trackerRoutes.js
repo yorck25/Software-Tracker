@@ -19,6 +19,7 @@ router.post('/software/:id', trackerController.tracker_software_edit_post);
 router.post('/hardware/:id', trackerController.tracker_hardware_edit_post);
 router.delete('/software/:id', trackerController.tracker_delete_software);
 router.delete('/hardware/:id', trackerController.tracker_delete_hardware);
+router.delete('/settings/:id', trackerController.tracker_delete_settings)
 router.get('/test/create', trackerController.test_create)
 router.get('/test/edit', trackerController.test_edit);
 

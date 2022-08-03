@@ -204,7 +204,7 @@ const test_edit = (req, res) => {
 }
 
 const login = (req, res) => {
-    res.render('login', { title: 'Login' })
+    res.render('login', { title: 'Login', message: "" })
 }
 
 const register = (req, res) => {

@@ -22,7 +22,7 @@ exports.signup = (req, res) => {
                     res.status(500).send({ message: err });
                     return;
                 }
-                res.render('register', { title: "Registrieren", message: "Benutzer erfolgreich registriert - jetzt einloggen" });
+                res.render('login', { title: "Login", message: "Benutzer erfolgreich registriert - jetzt einloggen" });
             });
         }
     });
@@ -38,7 +38,7 @@ exports.signin = (req, res) => {
                 return;
             }
             if (!user) {
-                return res.render('login', { message: "Benutzer nicht gefunden" });
+                return res.render('login', { title:"Login", message: "Benutzer nicht gefunden" });
             }
             var passwordIsValid = bcrypt.compareSync(
                 req.body.password,

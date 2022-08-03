@@ -25,7 +25,7 @@
                     <thead>
                         <tr id="head_line">
                             <th class="row_1_head"><a href="/user.name">Nutzername</a></th>
-                            <th class="row_2_head"><a href="/user.pwd">Password</a></th>
+                            <th class="row_2_head"><a href="/user.pwd">Password-Hash</a></th>
                             <th class="row_3_head">Nutzer entfernen</a></th>
 
                         </tr>
@@ -42,11 +42,9 @@
                                 <tr class="body_table_content">
                                     <td class="row_1_body"><%= user.username %></td>
                                     <td class="row_2_body"><%= user.password %></td>
-                                    <li class="optionFields">
-                                        <td class="row_3_body">
-                                            <a class="delete" data-doc="<%= user._id %>"><img src="/img/icons/mull.png" alt="Nutzer entfernen"></a>
-                                        </td>
-                                    </li> 
+                                    <td class="row_3_body">
+                                        <a id="delete" class="delete" data-doc="<%= user._id %>"><img src="/img/icons/mull.png" alt="Nutzer entfernen"></a>
+                                    </td> 
                                 </tr>
 
 
@@ -61,18 +59,20 @@
     </section>
 
     <script>
-        console.log("running")
-        const trashcan = document.querySelector('a.delete');
-        trashcan.addEventListener('click', (e) => {
-            if (confirm("Diesen Nutzer wirklich löschen?")) {
-                const endpoint = `/settings/${trashcan.dataset.doc}`;
-                fetch(endpoint, {
-                    method: 'DELETE',
-                })
-                    .then(response => response.json())
-                    .then(data => data.redirect)
-                    .catch(err => console.log(err));
-            }
+        const test = document.querySelectorAll('a.delete');
+        test.forEach(element => {
+            element.addEventListener('click', (e) => {
+                if (confirm("Diesen Nutzer wirklich löschen?")) {
+                    const endpoint = `/settings/${element.dataset.doc}`;
+                    fetch(endpoint, {
+                        method: 'DELETE',
+                    })
+                        .then(response => response.json())
+                        .then(data => top.location.href = data.redirect)
+                        .catch(err => console.log(err));
+                }
+            })
+        
         });
 
     </script>
