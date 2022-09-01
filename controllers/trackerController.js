@@ -52,6 +52,30 @@ const tracker_settings = (req, res) => {
         })
 }
 
+const tracker_settings_name = (req, res) => {
+    User.find().sort({ username: +1})
+        .then(result => {
+            console.log(result);
+            res.render('settings', { title: "Settings", users: result })
+        })
+}
+
+const tracker_settings_mail = (req, res) => {
+    User.find().sort({ mail: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('settings', { title: "Settings", users: result })
+        })
+}
+
+const tracker_settings_phone = (req, res) => {
+    User.find().sort({ phone: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('settings', { title: "Settings", users: result })
+        })
+}
+
 const tracker_hardware = (req, res) => {
     Hardware.find().sort({ warrenty: +1 })
         .then(result => {
@@ -223,6 +247,9 @@ module.exports = {
     tracker_hardware_buy,
     tracker_hardware_warrenty,
     tracker_settings,
+    tracker_settings_name,
+    tracker_settings_mail,
+    tracker_settings_phone,
     tracker_software,
     tracker_software_category,
     tracker_software_name,

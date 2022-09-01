@@ -22,7 +22,10 @@ module.exports = function (app) {
     app.get('/hardware.name', [authJwt.verifyToken], trackerController.tracker_hardware_name);
     app.get('/hardware.buy', [authJwt.verifyToken], trackerController.tracker_hardware_buy);
     app.get('/hardware.warrenty', [authJwt.verifyToken], trackerController.tracker_hardware_warrenty);
-    app.get('/settings', [authJwt.verifyToken], trackerController.tracker_settings);
+    app.get('/users', [authJwt.verifyToken], trackerController.tracker_settings);
+    app.get('/users.name', [authJwt.verifyToken], trackerController.tracker_settings_name);
+    app.get('/users.mail', [authJwt.verifyToken], trackerController.tracker_settings_mail);
+    app.get('/users.phone', [authJwt.verifyToken], trackerController.tracker_settings_phone);
     app.get('/software/create', [authJwt.verifyToken], trackerController.tracker_software_create);
     app.get('/hardware/create', [authJwt.verifyToken], trackerController.tracker_hardware_create)
     app.get('/software/:id', [authJwt.verifyToken], trackerController.tracker_software_edit);
