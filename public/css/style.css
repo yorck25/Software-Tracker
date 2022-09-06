@@ -300,16 +300,12 @@ body {
     padding-bottom: 10px;
     width: 100px;
     float: right;
-    margin-right: -45px;
-    margin-left: 45px
 }
 
 #row_7body_hardware {
     padding-bottom: 10px;
     width: 100px;
     float: right;
-    margin-right: -70px;
-    margin-left: 70px
 }
 
 #row_7body img{
@@ -396,6 +392,7 @@ body {
     font-weight: bold;
     display: flex;
     align-items: center;
+    max-width: max-content;
 }
 
 
@@ -444,7 +441,6 @@ ul li {
 }
 
 #delete {
-    display: flex;
     justify-content: center;
 }
 
@@ -526,7 +522,6 @@ ul li {
 
 .delete{
     padding: 0%;
-    display: flex;
     align-items: center;
 
 }

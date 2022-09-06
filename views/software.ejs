@@ -31,28 +31,27 @@
                 <img class="create_logo" src="/img/icons/create.png">
                 <a href="/software/create" target="iframe_a">Neuen Eintrag erstellen</a>
             </div>
+            <div class="search">
+                <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search users.." title="Type in a user">
+            </div>
         </div>
 
         <div class="table">
             <div>
-                <table id="upper_table">
+                <table class="table-sortable" id="upper_table">
                     <thead>
-                        <tr id="head_line">
-                            <th class="row_1_head"><a href="/software.category">Kategorie</a></th>
-                            <th class="row_2_head"><a href="/software.name">Name</a></th>
-                            <th class="row_3_head"><a href="/software.start">Start</a></th>
-                            <th class="row_4_head"><a href="/software.end">Ende</a></th>
-                            <th class="row_5_head">Restliche Laufzeit</a></th>
-                            <th class="row_6_head">Information</a></th>
+                        <tr class="header" id="head_line">
+                            <th data-sort="category" class="row_1_head">Kategorie</a></th>
+                            <th data-sort="name" class="row_2_head">Name</a></th>
+                            <th data-sort="start" class="row_3_head">Start</a></th>
+                            <th data-sort="end" class="row_4_head">Ende</a></th>
+                            <th data-sort="rest" class="row_5_head">Restliche Laufzeit</a></th>
+                            <th data-sort="info" class="row_6_head">Information</a></th>
                             <th class="row_7_head">Optionen</a></th>
                         </tr>
                     </thead>
-                </table>
-            </div> 
 
-            <div>
-                <table id="body_table">
-                    <tbody>
+                    <tbody id="body_table">
 
                         <% if (trackers.length > 0) { %>
                             <% trackers.forEach(tracker => { %>
@@ -82,12 +81,10 @@
                                     <td id="row_7body"class="trigger_popup_fricc"><a href="/software/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
                                 </tr>
 
-                            
-
                             <% }) %> 
                         <% } %>
 
-                    </thead>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -124,5 +121,60 @@
             });
          
     </script>
+
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td1, td2, td3, td4, td5, td6, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("body_table");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td1 = tr[i].getElementsByTagName("td")[0];
+                td2 = tr[i].getElementsByTagName("td")[1];
+                td3 = tr[i].getElementsByTagName("td")[2];
+                td4 = tr[i].getElementsByTagName("td")[3];
+                td5 = tr[i].getElementsByTagName("td")[4];
+                td6 = tr[i].getElementsByTagName("td")[5];
+                if (td1 || td2 || td3 || td4 || td5 || td6) {
+                    txtValue1 = td1.textContent || td1.innerText;
+                    txtValue2 = td2.textContent || td2.innerText;
+                    txtValue3 = td3.textContent || td3.innerText;
+                    txtValue4 = td4.textContent || td4.innerText;
+                    txtValue5 = td5.textContent || td5.innerText;
+                    txtValue6 = td6.textContent || td6.innerText;
+                    if (txtValue1.toUpperCase().indexOf(filter) > -1 || 
+                        txtValue2.toUpperCase().indexOf(filter) > -1 || 
+                        txtValue3.toUpperCase().indexOf(filter) > -1 ||
+                        txtValue4.toUpperCase().indexOf(filter) > -1 ||
+                        txtValue5.toUpperCase().indexOf(filter) > -1 ||
+                        txtValue6.toUpperCase().indexOf(filter) > -1 ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script type="text/javascript" src="/js/tablesort.min.js"></script>
+    
+    <script>document.querySelector('.table-sortable').tsortable()</script>
+    
+    <style>
+        [data-sort]:hover {
+            cursor: pointer;
+        }
+    
+        [data-dir="asc"]:after {
+            content: ' ▲';
+        }
+    
+        [data-dir="desc"]:after {
+            content: ' ▼';
+        }
+    </style>
+
 </body>
 </html>

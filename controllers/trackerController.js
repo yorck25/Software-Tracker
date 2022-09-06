@@ -48,7 +48,7 @@ const tracker_settings = (req, res) => {
     User.find().sort({ username: +1 })
         .then(result => {
             console.log(result);
-            res.render('settings', { title: "Settings", users: result })
+            res.render('users', { title: "Settings", users: result })
         })
 }
 
@@ -56,7 +56,7 @@ const tracker_settings_name = (req, res) => {
     User.find().sort({ username: +1})
         .then(result => {
             console.log(result);
-            res.render('settings', { title: "Settings", users: result })
+            res.render('users', { title: "Settings", users: result })
         })
 }
 
@@ -64,7 +64,7 @@ const tracker_settings_mail = (req, res) => {
     User.find().sort({ mail: +1 })
         .then(result => {
             console.log(result);
-            res.render('settings', { title: "Settings", users: result })
+            res.render('users', { title: "Settings", users: result })
         })
 }
 
@@ -72,7 +72,7 @@ const tracker_settings_phone = (req, res) => {
     User.find().sort({ phone: +1 })
         .then(result => {
             console.log(result);
-            res.render('settings', { title: "Settings", users: result })
+            res.render('users', { title: "Settings", users: result })
         })
 }
 

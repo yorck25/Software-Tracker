@@ -15,13 +15,13 @@
         <div style="height: 65px;" id="category_head">
         
             <div class="trigger_popup_fricc">
-
+                <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search users.." title="Type in a user">
             </div>
         </div>
 
         <div class="table">
             <div>
-                <table id="upper_table">
+                <table class="searchable sortable" id="upper_table">
                     <thead>
                         <tr id="head_line">
                             <th class="row_1_head"><a href="/users.name">Nutzername</a></th>
@@ -46,9 +46,7 @@
                                     <td class="row_2_body"><%= user.mail %></td>
                                     <td class="row_3_body"><%= user.phone %></td>
                                     <td class="row_4_body_settings"><%= user.password %></td>
-                                    <td class="row_5_body">
-                                        <a id="delete" class="delete" data-doc="<%= user._id %>"><img src="/img/icons/mull.png" alt="Nutzer entfernen"></a>
-                                    </td> 
+                                    <td class="row_5_body"><a id="delete" class="delete" data-doc="<%= user._id %>"><img src="/img/icons/mull.png" alt="Nutzer entfernen"></a></td> 
                                 </tr>
 
 
@@ -79,6 +77,31 @@
         
         });
 
+    </script>
+    
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td1, td2, td3, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("body_table");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td1 = tr[i].getElementsByTagName("td")[0];
+                td2 = tr[i].getElementsByTagName("td")[1];
+                td3 = tr[i].getElementsByTagName("td")[2];
+                if (td1 || td2 || td3) {
+                    txtValue1 = td1.textContent || td1.innerText;
+                    txtValue2 = td2.textContent || td2.innerText;
+                    txtValue3 = td3.textContent || td3.innerText;
+                    if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 
 </body>
