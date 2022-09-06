@@ -11,39 +11,6 @@ const tracker_software = (req, res) => {
         })
 }
 
-const tracker_software_category = (req, res) => {
-    Software.find().sort({category: -1 })
-        .then(result => {
-            console.log(result);
-            res.render('software', { title: "Software", trackers: result });
-        })
-}
-
-const tracker_software_name = (req, res) => {
-    Software.find().sort({ name: +1 })
-        .then(result => {
-            console.log(result);
-            res.render('software', { title: "Software", trackers: result });
-        })
-}
-
-const tracker_software_start = (req, res) => {
-    Software.find().sort({ start: +1 })
-        .then(result => {
-            console.log(result);
-            res.render('software', { title: "Software", trackers: result });
-        })
-}
-
-const tracker_software_end = (req, res) => {
-    Software.find().sort({ end: +1 })
-        .then(result => {
-            console.log(result);
-            res.render('software', { title: "Software", trackers: result });
-        })
-}
-
-
 const tracker_settings = (req, res) => {
     User.find().sort({ username: +1 })
         .then(result => {
@@ -52,63 +19,7 @@ const tracker_settings = (req, res) => {
         })
 }
 
-const tracker_settings_name = (req, res) => {
-    User.find().sort({ username: +1})
-        .then(result => {
-            console.log(result);
-            res.render('users', { title: "Settings", users: result })
-        })
-}
-
-const tracker_settings_mail = (req, res) => {
-    User.find().sort({ mail: +1 })
-        .then(result => {
-            console.log(result);
-            res.render('users', { title: "Settings", users: result })
-        })
-}
-
-const tracker_settings_phone = (req, res) => {
-    User.find().sort({ phone: +1 })
-        .then(result => {
-            console.log(result);
-            res.render('users', { title: "Settings", users: result })
-        })
-}
-
 const tracker_hardware = (req, res) => {
-    Hardware.find().sort({ warrenty: +1 })
-        .then(result => {
-            console.log(result);
-            res.render('hardware', { title: "Hardware", trackers: result });
-        })
-}
-
-const tracker_hardware_category = (req, res) => {
-    Hardware.find().sort({ category: +1 })
-        .then(result => {
-            console.log(result);
-            res.render('hardware', { title: "Hardware", trackers: result });
-        })
-}
-
-const tracker_hardware_name = (req, res) => {
-    Hardware.find().sort({ name: +1 })
-        .then(result => {
-            console.log(result);
-            res.render('hardware', { title: "Hardware", trackers: result });
-        })
-}
-
-const tracker_hardware_buy = (req, res) => {
-    Hardware.find().sort({ buy: +1 })
-        .then(result => {
-            console.log(result);
-            res.render('hardware', { title: "Hardware", trackers: result });
-        })
-}
-
-const tracker_hardware_warrenty = (req, res) => {
     Hardware.find().sort({ warrenty: +1 })
         .then(result => {
             console.log(result);
@@ -219,14 +130,6 @@ const tracker_hardware_create_post = (req, res) => {
         });
 }
 
-const test_create = (req, res) => {
-    res.render('software_create', { title: "Create" })
-}
-
-const test_edit = (req, res) => {
-    res.render('edit1', { title: "Edit"})
-}
-
 const login = (req, res) => {
     res.render('login', { title: 'Login', message: "" })
 }
@@ -235,26 +138,10 @@ const register = (req, res) => {
     res.render('register', { title: 'Registrieren', message: "" })
 }
 
-const userLog = (req, res) => {
-    res.render('user')
-}
-
-
 module.exports = {
     tracker_hardware,
-    tracker_hardware_category,
-    tracker_hardware_name,
-    tracker_hardware_buy,
-    tracker_hardware_warrenty,
     tracker_settings,
-    tracker_settings_name,
-    tracker_settings_mail,
-    tracker_settings_phone,
     tracker_software,
-    tracker_software_category,
-    tracker_software_name,
-    tracker_software_start,
-    tracker_software_end,
     tracker_software_edit,
     tracker_hardware_edit,
     tracker_software_edit_post,
@@ -266,9 +153,6 @@ module.exports = {
     tracker_software_create_post,
     tracker_hardware_create,
     tracker_hardware_create_post,
-    test_create,
-    test_edit,
     login,
     register,
-    userLog,
 }

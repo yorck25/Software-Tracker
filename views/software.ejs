@@ -41,12 +41,12 @@
                 <table class="table-sortable" id="upper_table">
                     <thead>
                         <tr class="header" id="head_line">
-                            <th data-sort="category" class="row_1_head">Kategorie</a></th>
-                            <th data-sort="name" class="row_2_head">Name</a></th>
-                            <th data-sort="start" class="row_3_head">Start</a></th>
-                            <th data-sort="end" class="row_4_head">Ende</a></th>
-                            <th data-sort="rest" class="row_5_head">Restliche Laufzeit</a></th>
-                            <th data-sort="info" class="row_6_head">Information</a></th>
+                            <th data-sort="string" class="row_1_head">Kategorie</a></th>
+                            <th data-sort="string" class="row_2_head">Name</a></th>
+                            <th data-sort="date" class="row_3_head">Start</a></th>
+                            <th data-sort="date" class="row_4_head">Ende</a></th>
+                            <th data-sort="int" class="row_5_head">Restliche Laufzeit</a></th>
+                            <th data-sort="string" class="row_6_head">Information</a></th>
                             <th class="row_7_head">Optionen</a></th>
                         </tr>
                     </thead>
@@ -58,12 +58,12 @@
                                 <tr class="body_table_content">
                                     <% //formating start day to better readable string %>
                                     <% var d = tracker.start; %>
-                                    <% var startString = ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + "." + d.getFullYear(); %>
+                                    <% var startString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
                                     <% console.log(startString) %>
 
                                     <% //formating end day to better readable string %>
                                     <% var d = tracker.end; %>
-                                    <% var endString = ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + "." + d.getFullYear(); %>
+                                    <% var endString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
                                     <% console.log(endString) %>
 
                                     <% //Calculation the diffeence between start day and end day %>
@@ -78,7 +78,7 @@
                                     <td class="row_4_body"><%= endString %></td>
                                     <td class="row_5_body"><%= Difference_In_Days %></td>
                                     <td class="row_6_body"><%= tracker.info %></td>      
-                                    <td id="row_7body"class="trigger_popup_fricc"><a href="/software/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
+                                    <td id="row_7_body"class="trigger_popup_fricc"><a href="/software/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
                                 </tr>
 
                             <% }) %> 
@@ -96,7 +96,7 @@
         <div class="popup-frame">
             <div class="popupCloseButton">&times;</div>
             <p></p>
-            <iframe name="iframe_a" height="600px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+            <iframe name="iframe_a" height="500px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
         </div>
     </div>
     
@@ -168,11 +168,12 @@
         }
     
         [data-dir="asc"]:after {
-            content: ' ▲';
+            content: ' ▴ ';
+            width: 1px;
         }
     
         [data-dir="desc"]:after {
-            content: ' ▼';
+            content: ' ▾ ';
         }
     </style>
 

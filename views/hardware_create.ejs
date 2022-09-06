@@ -12,7 +12,7 @@
             <li><input placeholder="Kaufdatum: " type="date" id="buy" name="buy" required calss="create_input"></li>
             <li><input placeholder="Garantie bis: " type="date" id="warrenty" name="warrenty" requierd calss="create_input"></li>
             <li><input placeholder="Information: " type="text" id="info" name="info" calss="create_input" class="create_input_information"></li>
-            <a class="btnCreate"><img alt="edit" src="/img/icons/bearbeiten.png">Eintrag bearbeiten und speichern</a>
+            <a class="btnCreate"><img alt="edit" src="/img/icons/bearbeiten.png"></a>
         </ul>
     </form>
 
@@ -34,37 +34,4 @@
     })
 </script>
 
-<script>
-    (function () {
-
-            var min = 100, max = 300, pad_right = 5, input = document.getElementById('info');
-
-            input.style.width = min + 'px';
-            input.onkeypress = input.onkeydown = input.onkeyup = function () {
-                var input = this;
-                setTimeout(function () {
-                    var tmp = document.createElement('div');
-                    tmp.style.padding = '0';
-                    if (getComputedStyle)
-                        tmp.style.cssText = getComputedStyle(input, null).cssText;
-                    if (input.currentStyle)
-                        tmp.style = input.currentStyle;
-                    tmp.style.width = '';
-                    tmp.style.position = 'absolute';
-                    tmp.innerHTML = input.value.replace(/&/g, "&amp;")
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;")
-                        .replace(/"/g, "&quot;")
-                        .replace(/'/g, "&#039;")
-                        .replace(/ /g, '&nbsp;');
-                    input.parentNode.appendChild(tmp);
-                    var width = tmp.clientWidth + pad_right + 1;
-                    tmp.parentNode.removeChild(tmp);
-                    if (min <= width && width <= max)
-                        input.style.width = width + 'px';
-                }, 1);
-            }
-
-        })();
-</script>
 </html>

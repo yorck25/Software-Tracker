@@ -34,35 +34,31 @@
 
         <div class="table">
             <div>
-                <table id="upper_table">
+                <table class="table-sortable" id="upper_table">
                     <thead>
-                        <tr id="head_line">
-                            <th class="row_1_head"><a href="/hardware.category">Kategorie</a></th>
-                            <th class="row_2_head"><a href="/hardware.name">Name</a></th>
-                            <th class="row_3_head"><a href="/hardware.buy">Kaufdatum</a></th>
-                            <th class="row_4_head"><a href="/hardware.warrenty">Garantie bis</a></th>
-                            <th class="row_6_head_hardware">Information</th>
+                        <tr class="header" id="head_line">
+                            <th data-sort="string" class="row_1_head">Kategorie</a></th>
+                            <th data-sort="string" class="row_2_head">Name</a></th>
+                            <th data-sort="date" class="row_3_head">Kaufdatum</a></th>
+                            <th data-sort="date" class="row_4_head">Garantie bis</a></th>
+                            <th data-sort="string" class="row_6_head_hardware">Information</th>
                             <th class="row_7_head_hardware">Optionen</th>
                         </tr>
                     </thead>
-                </table>
-            </div> 
 
-            <div>
-                <table id="body_table">
-                    <tbody>
+                    <tbody id="body_table">
 
                         <% if (trackers.length > 0) { %>
                             <% trackers.forEach(tracker => { %>
                                 <tr class="body_table_content">
                                     <% //formating start day to better readable string %>
                                     <% var d = tracker.buy; %>
-                                    <% var buyString = ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + "." + d.getFullYear(); %>
+                                    <% var buyString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
                                     <% console.log(buyString) %>
 
                                     <% //formating end day to better readable string %>
                                     <% var d = tracker.warrenty; %>
-                                    <% var warrentyString = ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + "." + d.getFullYear(); %>
+                                    <% var warrentyString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
                                     <% console.log(warrentyString) %>
 
                                     <td class="row_1_body"><%= tracker.category %></td>
@@ -70,7 +66,7 @@
                                     <td class="row_3_body"><%= buyString %></td>
                                     <td class="row_4_body"><%= warrentyString %></td>
                                     <td class="row_6_body_hardware"><%= tracker.info %></td>      
-                                    <td id="row_7body_hardware" class="trigger_popup_fricc"><a href="/hardware/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
+                                    <td id="row_7_body" class="trigger_popup_fricc"><a href="/hardware/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
                                 </tr>
 
                             
@@ -78,7 +74,7 @@
                             <% }) %> 
                         <% } %>
 
-                    </thead>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -93,7 +89,7 @@
         <div class="popup-frame">
             <div class="popupCloseButton">&times;</div>
             <p></p>
-            <iframe name="iframe_a" height="600px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+            <iframe name="iframe_a" height="500px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
         </div>
     </div>
 
@@ -150,5 +146,25 @@
             }
         }
     </script>
+
+    <script type="text/javascript" src="/js/tablesort.min.js"></script>
+        
+    <script>document.querySelector('.table-sortable').tsortable()</script>
+        
+    <style>
+        [data-sort]:hover {
+            cursor: pointer;
+        }
+        
+        [data-dir="asc"]:after {
+            content: ' ▴ ';
+            width: 1px;
+        }
+        
+        [data-dir="desc"]:after {
+            content: ' ▾ ';
+        }
+    </style>
+
 </body>
 </html>

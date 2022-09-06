@@ -130,11 +130,13 @@ body {
     margin-top: 90px;
     width: 1600px;
     max-height: 80px;
+    display: flex;
     padding: 10px;
     
     -webkit-box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
     -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
+    justify-content: space-between;
 }
 
 #category_head a{
@@ -152,6 +154,25 @@ body {
 
 #category_head a:hover{
     text-decoration: underline;
+}
+
+.search {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    max-height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 20px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 15px;
 }
 
 .table {
@@ -202,7 +223,7 @@ body {
     width: 150px;
 }
 
-.row_4_head_settings {
+.row_4_head_users {
     width: 550px;
 }
 
@@ -264,7 +285,7 @@ body {
     text-align: center;
 }
 
-.row_4_body_settings {
+.row_4_body_users {
     width: 550px;
     border-bottom-style: solid;
     border-bottom-width: 1, 25px;
@@ -296,39 +317,27 @@ body {
     text-align: center;
 }
 
-#row_7body{
-    padding-bottom: 10px;
+#row_7_body {
+    padding: 5px;
     width: 100px;
-    float: right;
+    text-align: center;
+    display: table-cell;
+    border-bottom-style: solid;
+    border-bottom-width: 1, 25px;
+    border-color: #e4e4e4;
 }
 
-#row_7body_hardware {
-    padding-bottom: 10px;
-    width: 100px;
-    float: right;
-}
-
-#row_7body img{
+#row_7_body img {
     height: 50px;
     width: auto;
 }
 
-#row_7body_hardware img {
-    height: 50px;
-    width: auto;
-}
-
-#row_7body img:hover{
+#row_7_body img:hover {
     position: relative;
     background-color: rgb(221, 221, 221);
     width: auto;
 }
 
-#row_7body_hardware img:hover {
-    position: relative;
-    background-color: rgb(221, 221, 221);
-    width: auto;
-}
 
 /*popup*/
 
@@ -355,10 +364,8 @@ body {
     box-shadow: 10px 10px 60px #555;
     display: inline-block;
     height: auto;
-    max-width: 551px;
-    min-height: 100px;
+    max-width: 300px;
     vertical-align: middle;
-    width: 60%;
     position: relative;
     border-radius: 8px;
     padding: 15px 5%;
@@ -392,7 +399,6 @@ body {
     font-weight: bold;
     display: flex;
     align-items: center;
-    max-width: max-content;
 }
 
 
@@ -451,29 +457,20 @@ ul li {
     border-radius: 10px;
     margin: 10px;
     width: 150px;
-    border-style: solid;
-    border-color: rgb(99, 99, 99);
+    border: solid 1px black;
     transition: 0.5s;
 }
 
 .formElement li input:hover{  
-    border-color: #555;
+    border: solid 1px #555;
     background-color: #ccc;  
-}
-
-.create_input_information{
-    display: inline-block;
-    border: solid 1px black;
-    min-width: 50px; 
-    max-width: 200px;
-    min-height: 50px;
 }
 
 .btnCreate{
     padding: 0;
     display: flex;
     align-items: center;
-    margin-left: 10px;
+    justify-content: center;
 }
 
 .btnCreate img {
@@ -492,12 +489,17 @@ ul li {
 /*---------------------------edit-PopUp------------------*/
 
 .formElement ul {
-    display: block;
-    margin-left: 50px;
+    padding: 0;
 }
 
+.formElement ul li {
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-.formElementedit input{
+.formElement input{
     min-height: 35px;
     border-radius: 10px;
     margin: 10px;
@@ -512,20 +514,6 @@ ul li {
     background-color: #ccc;  
 }
 
-.edit_input_information{
-    display: inline-block;
-    border: solid 1px black;
-    min-width: 50px; 
-    max-width: 200px;
-    min-height: 50px;
-}
-
-.delete{
-    padding: 0%;
-    align-items: center;
-
-}
-
 .delete img{
     height: 50px;
     width: auto;
@@ -534,16 +522,11 @@ ul li {
 }
 
 .btnEdit {
-    padding: 0;
-    display: flex;
-    align-items: center;
+    max-width: max-content;
 }
 
 .btnEdit img{
     height: 40px;
-    width: auto;
-    padding: 5px;
-    margin-bottom: 5px;
 }
 
 .optionFields{
@@ -553,11 +536,6 @@ ul li {
     padding: 0%;
     margin-top: 15px
 }
-
-.formElement ul li{
-    max-height: 500px;
-}
-
 
 
 /*---------------------------login------------------*/
