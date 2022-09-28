@@ -12,11 +12,13 @@ module.exports = function (app) {
     });
     app.get('/software', [authJwt.verifyToken], trackerController.tracker_software);
     app.get('/hardware', [authJwt.verifyToken], trackerController.tracker_hardware);
-    app.get('/users', [authJwt.verifyToken], trackerController.tracker_settings);
+    app.get('/users', [authJwt.verifyToken, authJwt.isAdmin], trackerController.tracker_settings);
     app.get('/software/create', [authJwt.verifyToken], trackerController.tracker_software_create);
-    app.get('/hardware/create', [authJwt.verifyToken], trackerController.tracker_hardware_create)
+    app.get('/hardware/create', [authJwt.verifyToken], trackerController.tracker_hardware_create);
     app.get('/software/:id', [authJwt.verifyToken], trackerController.tracker_software_edit);
     app.get('/hardware/:id', [authJwt.verifyToken], trackerController.tracker_hardware_edit);
+    app.get('/api/test/user', [authJwt.verifyToken], controller.userBoard);
+    app.get('/api/test/admin', [authJwt.verifyToken, authJwt.isAdmin], controller.adminBoard);
     app.post('/software', [authJwt.verifyToken], trackerController.tracker_software_create_post)
     app.post('/hardware', [authJwt.verifyToken], trackerController.tracker_hardware_create_post)
     app.post('/software/:id', [authJwt.verifyToken], trackerController.tracker_software_edit_post);

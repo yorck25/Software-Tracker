@@ -6,23 +6,27 @@
 <body style="background-color: #fff;" id="edit-page">
 
     <form id="form" class="formElement">
+        <% if(tracker.buy != null) { %>
         <% //formating start day to better readable string %>
         <% var d = tracker.buy; %>
         <% var buyString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
-        <% console.log(buyString) %>
+        <% console.log(buyString) } %>
         
+        <% if(tracker.warrenty != null) { %>
         <% //formating end day to better readable string %>
         <% var d = tracker.warrenty; %>
         <% var warrentyString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
-        <% console.log(warrentyString) %>
+        <% console.log(warrentyString) } %>
 
         <ul id="edit_form" class="formElement">
 
-            <li><input placeholder="Kategorie: " type="text" id="category" name="category" value="<%= tracker.category %>" required></li>
+            <li><input placeholder="Inventurnummer: " type="number" id="inventory" name="inventory" value="<%= tracker.inventory %>" required></li>
             <li><input placeholder="Name: " type="text" id="name" name="name" value="<%= tracker.name %>" required></li>
-            <li><input placeholder="Kaufdatum: " type="date" id="start" name="start" value="<%= buyString %>" requierd></li>
-            <li><input placeholder="Garantie bis: " type="date" id="end" name="end" value="<%= warrentyString %>" requierd></li>
+            <li><input placeholder="Kaufdatum: " type="date" id="start" name="start" value="<%= buyString %>"></li>
+            <li><input placeholder="Garantie bis: " type="date" id="end" name="end" value="<%= warrentyString %>"></li>
             <li><input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>"></li>
+            <li><input placeholder="Anmerkungen: " type="text" id="notes" name="notes" value="<%= tracker.notes %>"></li>
+            <li><input placeholder="Notzien: " type="text" id="memo" name="memo" value="<%= tracker.memo %>"></li>   
             <li class="optionFields">
                 <td>
                     <a class="btnEdit"><img alt="edit" src="/img/icons/bearbeiten.png"></a>

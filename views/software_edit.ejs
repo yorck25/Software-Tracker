@@ -6,23 +6,27 @@
 <body style="background-color: #fff;" id="edit-page">
 
     <form id="form" class="formElement">
+        <% if(tracker.start != null) { %>
         <% //formating start day to better readable string %>
         <% var d = tracker.start; %>
         <% var startString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
-        <% console.log(startString) %>
+        <% console.log(startString) } %>
         
+        <% if(tracker.end != null) { %>
         <% //formating end day to better readable string %>
         <% var d = tracker.end; %>
         <% var endString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
-        <% console.log(endString) %>
+        <% console.log(endString) } %>
 
         <ul id="edit_form" class="formElement">
                    
             <li><input placeholder="Kategorie: " type="text" name="category" value="<%= tracker.category %>" calss="edit_input" required class="edit_input_category"></li>
             <li><input placeholder="Name: " type="text" name="name" value="<%= tracker.name %>" calss="edit_input" required class="edit_input_name"></li>   
-            <li><input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= startString %>" calss="edit_input" requierd class="edit_input"></li>    
-            <li><input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>"  calss="edit_input" requierd class="edit_input"></li>   
-            <li><input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>" calss="edit_input" required class="edit_input_information"></li>   
+            <li><input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= startString %>" calss="edit_input" class="edit_input"></li>    
+            <li><input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>"  calss="edit_input" class="edit_input"></li>   
+            <li><input placeholder="Information: " type="text" id="info" name="info" value="<%= tracker.info %>" calss="edit_input" class="edit_input_information"></li>
+            <li><input placeholder="Anmerkungen: " type="text" id="notes" name="notes" value="<%= tracker.notes %>" calss="edit_input" class="edit_input_notes"></li>
+            <li><input placeholder="Notzien: " type="text" id="memo" name="memo" value="<%= tracker.memo %>" calss="edit_input" class="edit_input_memo"></li>   
             <li class="optionFields">
                 <td>
                     <a class="btnEdit"><img alt="edit" src="/img/icons/bearbeiten.png"></a>

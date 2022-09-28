@@ -12,13 +12,21 @@ const trackerSchema = new Schema({
     },
     start: {
         type: Date,
-        required: true,
+        required: false,
     },
     end: {
         type: Date,
-        required: true,
+        required: false,
     },
     info: {
+        type: String,
+        required: false,
+    },
+    notes: {
+        type: String,
+        required: false,
+    },
+    memo: {
         type: String,
         required: false,
     },

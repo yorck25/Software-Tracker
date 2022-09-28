@@ -37,7 +37,7 @@
                 <table class="table-sortable" id="upper_table">
                     <thead>
                         <tr class="header" id="head_line">
-                            <th data-sort="string" class="row_1_head">Kategorie</a></th>
+                            <th data-sort="number" class="row_1_head">Inventurnummer</a></th>
                             <th data-sort="string" class="row_2_head">Name</a></th>
                             <th data-sort="date" class="row_3_head">Kaufdatum</a></th>
                             <th data-sort="date" class="row_4_head">Garantie bis</a></th>
@@ -51,17 +51,19 @@
                         <% if (trackers.length > 0) { %>
                             <% trackers.forEach(tracker => { %>
                                 <tr class="body_table_content">
+                                    <% if(tracker.buy != null) { %>
                                     <% //formating start day to better readable string %>
                                     <% var d = tracker.buy; %>
                                     <% var buyString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
-                                    <% console.log(buyString) %>
+                                    <% console.log(buyString) } %>
 
+                                    <% if(tracker.warrenty != null) { %>
                                     <% //formating end day to better readable string %>
                                     <% var d = tracker.warrenty; %>
                                     <% var warrentyString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
-                                    <% console.log(warrentyString) %>
+                                    <% console.log(warrentyString) } %>
 
-                                    <td class="row_1_body"><%= tracker.category %></td>
+                                    <td class="row_1_body"><%= tracker.inventory %></td>
                                     <td class="row_2_body"><%= tracker.name %></td>
                                     <td class="row_3_body"><%= buyString %></td>
                                     <td class="row_4_body"><%= warrentyString %></td>

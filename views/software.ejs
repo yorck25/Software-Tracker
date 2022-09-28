@@ -56,21 +56,24 @@
                         <% if (trackers.length > 0) { %>
                             <% trackers.forEach(tracker => { %>
                                 <tr class="body_table_content">
+                                    <% if(tracker.start != null) { %>
                                     <% //formating start day to better readable string %>
                                     <% var d = tracker.start; %>
                                     <% var startString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
-                                    <% console.log(startString) %>
+                                    <% console.log(startString) } %>
 
+                                    <% if(tracker.end != null) { %>
                                     <% //formating end day to better readable string %>
                                     <% var d = tracker.end; %>
                                     <% var endString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)); %>
-                                    <% console.log(endString) %>
+                                    <% console.log(endString) } %>
 
+                                    <% if(tracker.start != null && tracker.end != null) { %>
                                     <% //Calculation the diffeence between start day and end day %>
-                                    <% let date1 = new Date(tracker.start); %>
-                                    <% let date2 = new Date(tracker.end); %>
-                                    <% let Difference_In_Time = date2.getTime() - date1.getTime(); %>
-                                    <% let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); %>
+                                    <% var date1 = new Date(tracker.start); %>
+                                    <% var date2 = new Date(tracker.end); %>
+                                    <% var Difference_In_Time = date2.getTime() - date1.getTime(); %>
+                                    <% var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); } %>
 
                                     <td class="row_1_body"><%= tracker.category %></td>
                                     <td class="row_2_body"><%= tracker.name %></td>
