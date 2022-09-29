@@ -4,7 +4,7 @@ Bei Technikfragen Tigi fragen
 
 ### Start
 ```bash 
-npm run watch
+npm run dev
 ```
 
 ### Port

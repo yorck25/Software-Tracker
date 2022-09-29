@@ -309,12 +309,20 @@ body {
     text-align: center;
 }
 
+.row_6_body:hover {
+    cursor: pointer;
+}
+
 .row_6_body_hardware {
     width: 500px;
     border-bottom-style: solid;
     border-bottom-width: 1, 25px;
     border-color: #e4e4e4;
     text-align: center;
+}
+
+.row_6_body_hardware:hover {
+    cursor: pointer;
 }
 
 #row_7_body {
@@ -363,8 +371,8 @@ body {
     background-color: #fff;
     box-shadow: 10px 10px 60px #555;
     display: inline-block;
-    height: auto;
-    max-width: 300px;
+    height: 800px;
+    width: 1000px;
     vertical-align: middle;
     position: relative;
     border-radius: 8px;
@@ -500,13 +508,17 @@ ul li {
 }
 
 .formElement input{
-    min-height: 35px;
-    border-radius: 10px;
-    margin: 10px;
-    width: 150px;
-    border-style: solid;
-    border-color: rgb(99, 99, 99);
-    transition: 0.5s;
+    width: 300px;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgb(204, 204, 204);
+    transition: all .5s ease;
+    position: relative;
+    font-size: 14px;
+    color: #474747;
+    height: 100%;
+    text-align: left;
 }
 
 .formElement input:hover{  
@@ -618,4 +630,272 @@ ul li {
     justify-content: center;
     margin: 0;
     font-size: 15px;
+}
+
+
+/*---------------------------Tooltip------------------*/
+[data-tooltip] {
+    --arrow-size: 5px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Positioning and visibility settings of the tooltip */
+[data-tooltip]:before,
+[data-tooltip]:after {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    left: 50%;
+    bottom: calc(100% + var(--arrow-size));
+    pointer-events: none;
+    transition: 0.2s;
+    will-change: transform;
+}
+
+/* The actual tooltip with a dynamic width */
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    padding: 10px 18px;
+    min-width: 50px;
+    max-width: 300px;
+    width: max-content;
+    width: -moz-max-content;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: rgba(59, 72, 80, 0.9);
+    background-image: linear-gradient(30deg,
+            rgba(59, 72, 80, 0.44),
+            rgba(59, 68, 75, 0.44),
+            rgba(60, 82, 88, 0.44));
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    text-align: center;
+    white-space: pre-wrap;
+    transform: translate(-50%, calc(0px - var(--arrow-size))) scale(0.5);
+}
+
+/* Tooltip arrow */
+[data-tooltip]:after {
+    content: '';
+    border-style: solid;
+    border-width: var(--arrow-size) var(--arrow-size) 0px var(--arrow-size);
+    /* CSS triangle */
+    border-color: rgba(55, 64, 70, 0.9) transparent transparent transparent;
+    transition-duration: 0s;
+    /* If the mouse leaves the element, 
+                              the transition effects for the 
+                              tooltip arrow are "turned off" */
+    transform-origin: top;
+    /* Orientation setting for the
+                              slide-down effect */
+    transform: translateX(-50%) scaleY(0);
+}
+
+/* Tooltip becomes visible at hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Scales from 0.5 to 1 -> grow effect */
+[data-tooltip]:hover:before {
+    transition-delay: 0.3s;
+    transform: translate(-50%, calc(0px - var(--arrow-size))) scale(1);
+}
+
+/* 
+  Arrow slide down effect only on mouseenter (NOT on mouseleave)
+*/
+[data-tooltip]:hover:after {
+    transition-delay: 0.5s;
+    /* Starting after the grow effect */
+    transition-duration: 0.2s;
+    transform: translateX(-50%) scaleY(1);
+}
+
+/*
+  That's it for the basic tooltip.
+
+  If you want some adjustability
+  here are some orientation settings you can use:
+*/
+
+/* LEFT */
+/* Tooltip + arrow */
+[data-tooltip-location="left"]:before,
+[data-tooltip-location="left"]:after {
+    left: auto;
+    right: calc(100% + var(--arrow-size));
+    bottom: 50%;
+}
+
+/* Tooltip */
+[data-tooltip-location="left"]:before {
+    transform: translate(calc(0px - var(--arrow-size)), 50%) scale(0.5);
+}
+
+[data-tooltip-location="left"]:hover:before {
+    transform: translate(calc(0px - var(--arrow-size)), 50%) scale(1);
+}
+
+/* Arrow */
+[data-tooltip-location="left"]:after {
+    border-width: var(--arrow-size) 0px var(--arrow-size) var(--arrow-size);
+    border-color: transparent transparent transparent rgba(55, 64, 70, 0.9);
+    transform-origin: left;
+    transform: translateY(50%) scaleX(0);
+}
+
+[data-tooltip-location="left"]:hover:after {
+    transform: translateY(50%) scaleX(1);
+}
+
+
+
+/* RIGHT */
+[data-tooltip-location="right"]:before,
+[data-tooltip-location="right"]:after {
+    left: calc(100% + var(--arrow-size));
+    bottom: 50%;
+}
+
+[data-tooltip-location="right"]:before {
+    transform: translate(var(--arrow-size), 50%) scale(0.5);
+}
+
+[data-tooltip-location="right"]:hover:before {
+    transform: translate(var(--arrow-size), 50%) scale(1);
+}
+
+[data-tooltip-location="right"]:after {
+    border-width: var(--arrow-size) var(--arrow-size) var(--arrow-size) 0px;
+    border-color: transparent rgba(55, 64, 70, 0.9) transparent transparent;
+    transform-origin: right;
+    transform: translateY(50%) scaleX(0);
+}
+
+[data-tooltip-location="right"]:hover:after {
+    transform: translateY(50%) scaleX(1);
+}
+
+
+
+/* BOTTOM */
+[data-tooltip-location="bottom"]:before,
+[data-tooltip-location="bottom"]:after {
+    top: calc(100% + var(--arrow-size));
+    bottom: auto;
+}
+
+[data-tooltip-location="bottom"]:before {
+    transform: translate(-50%, var(--arrow-size)) scale(0.5);
+}
+
+[data-tooltip-location="bottom"]:hover:before {
+    transform: translate(-50%, var(--arrow-size)) scale(1);
+}
+
+[data-tooltip-location="bottom"]:after {
+    border-width: 0px var(--arrow-size) var(--arrow-size) var(--arrow-size);
+    border-color: transparent transparent rgba(55, 64, 70, 0.9) transparent;
+    transform-origin: bottom;
+}
+
+
+/*---------------------------dropdown------------------*/
+span.msg,
+span.choose {
+    color: #555;
+    padding: 5px 0 10px;
+    display: inherit
+}
+
+.container {
+    width: 500px;
+    text-align: center
+}
+
+/*Styling Selectbox*/
+.dropdown {
+    width: 300px;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgb(204, 204, 204);
+    transition: all .5s ease;
+    position: relative;
+    font-size: 14px;
+    color: #474747;
+    height: 100%;
+    text-align: left
+}
+
+.dropdown .select {
+    cursor: pointer;
+    display: block;
+    padding: 10px
+}
+
+.dropdown .select>i {
+    font-size: 13px;
+    color: #888;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    float: right;
+    line-height: 20px
+}
+
+.dropdown:hover {
+    box-shadow: 0 0 4px rgb(204, 204, 204)
+}
+
+.dropdown:active {
+    background-color: #f8f8f8
+}
+
+.dropdown.active:hover,
+.dropdown.active {
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+    border-radius: 2px 2px 0 0;
+    background-color: #f8f8f8
+}
+
+.dropdown.active .select>i {
+    transform: rotate(-90deg)
+}
+
+.dropdown .dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    left: 0;
+    margin-top: 1px;
+    box-shadow: 0 1px 2px rgb(204, 204, 204);
+    border-radius: 0 1px 2px 2px;
+    overflow: hidden;
+    display: none;
+    max-height: 144px;
+    overflow-y: auto;
+    z-index: 9
+}
+
+.dropdown .dropdown-menu li {
+    padding: 10px;
+    transition: all .2s ease-in-out;
+    cursor: pointer
+}
+
+.dropdown .dropdown-menu {
+    padding: 0;
+    list-style: none
+}
+
+.dropdown .dropdown-menu li:hover {
+    background-color: #f2f2f2
+}
+
+.dropdown .dropdown-menu li:active {
+    background-color: #e2e2e2
 }

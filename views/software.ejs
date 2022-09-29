@@ -80,7 +80,7 @@
                                     <td class="row_3_body"><%= startString %></td>
                                     <td class="row_4_body"><%= endString %></td>
                                     <td class="row_5_body"><%= Difference_In_Days %></td>
-                                    <td class="row_6_body"><%= tracker.info %></td>      
+                                    <td data-tooltip="<%= tracker.notes %>" data-tooltip-location="right" class="row_6_body"><%= tracker.info %></td>      
                                     <td id="row_7_body"class="trigger_popup_fricc"><a href="/software/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
                                 </tr>
 
