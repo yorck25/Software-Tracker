@@ -43,11 +43,13 @@
                         <tr class="header" id="head_line">
                             <th data-sort="string" class="row_1_head">Kategorie</a></th>
                             <th data-sort="string" class="row_2_head">Name</a></th>
-                            <th data-sort="date" class="row_3_head">Start</a></th>
-                            <th data-sort="date" class="row_4_head">Ende</a></th>
-                            <th data-sort="int" class="row_5_head">Restliche Laufzeit</a></th>
-                            <th data-sort="string" class="row_6_head">Information</a></th>
-                            <th class="row_7_head">Optionen</a></th>
+                            <th data-sort="int" class="row_3_head">Hardware</th> 
+                            <th data-sort="date" class="row_4_head">Start</a></th>
+                            <th data-sort="date" class="row_5_head">Ende</a></th>
+                            <th data-sort="int" class="row_6_head">Restliche Laufzeit</a></th>
+                            <th data-sort="string" class="row_7_head">Benutzer</a></th>
+                            <th data-sort="string" class="row_8_head">Information</a></th>
+                            <th class="row_9_head">Optionen</a></th>
                         </tr>
                     </thead>
 
@@ -77,11 +79,13 @@
 
                                     <td class="row_1_body"><%= tracker.category %></td>
                                     <td class="row_2_body"><%= tracker.name %></td>
-                                    <td class="row_3_body"><%= startString %></td>
-                                    <td class="row_4_body"><%= endString %></td>
-                                    <td class="row_5_body"><%= Difference_In_Days %></td>
-                                    <td data-tooltip="<%= tracker.notes %>" data-tooltip-location="right" class="row_6_body"><%= tracker.info %></td>      
-                                    <td id="row_7_body"class="trigger_popup_fricc"><a href="/software/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
+                                    <td class="row_3_body"><%= tracker.hardware %></td>
+                                    <td class="row_4_body"><%= startString %></td>
+                                    <td class="row_5_body"><%= endString %></td>
+                                    <td class="row_6_body"><%= Difference_In_Days %></td>
+                                    <td class="row_7_body"><%= tracker.user %></td>
+                                    <td data-tooltip="<%= tracker.notes %>" data-tooltip-location="right" class="row_8_body"><%= tracker.info %></td>      
+                                    <td id="row_9_body"class="trigger_popup_fricc"><a href="/software/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
                                 </tr>
 
                             <% }) %> 
@@ -99,7 +103,7 @@
         <div class="popup-frame">
             <div class="popupCloseButton">&times;</div>
             <p></p>
-            <iframe name="iframe_a" height="500px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+            <iframe name="iframe_a" height="750px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
         </div>
     </div>
     

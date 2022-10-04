@@ -14,15 +14,49 @@
                         <span>Kategorie </span>
                         <i class="fa fa-chevron-left"></i>
                         </div>
-                        <input type="hidden" name="newcat">
+                        <input type="hidden" name="category">
                         <ul class="dropdown-menu">
-                        <li id="microsoft">Microsoft</li>
-                        <li id="adobe">Adobe</li>
-                        <li id="windows">Windows</li>
+                        <li id="Microsoft">Microsoft</li>
+                        <li id="Adobe">Adobe</li>
+                        <li id="Windows">Windows</li>
                         </ul>
                     </div>
-                
-                <span class="msg"></span>
+                </div>
+            </li>
+            <li>
+                <div class="container">                
+                    <div class="dropdown">
+                        <div class="select">
+                        <span>User </span>
+                        <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <input type="hidden" name="user">
+                        <ul class="dropdown-menu">
+                        <% if (users.length > 0) { %>
+                            <% users.forEach(user => { %>
+                                <li id="<%= user.username %>"><%= user.username %></li>
+                            <% }) %> 
+                        <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="container">                
+                    <div class="dropdown">
+                        <div class="select">
+                        <span>Hardware - Inventurnummer </span>
+                        <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <input type="hidden" name="hardware">
+                        <ul class="dropdown-menu">
+                        <% if (tracker.length > 0) { %>
+                            <% tracker.forEach(tracker => { %>
+                                <li id="<%= tracker.inventory %>"><%= tracker.inventory %></li>
+                            <% }) %> 
+                        <% } %>
+                        </ul>
+                    </div>
                 </div>
             </li>
             <li><input placeholder="Name: " type="text" name="name" required class="create_input" class="create_input_name"></li>

@@ -30,6 +30,10 @@ const trackerSchema = new Schema({
         type: String,
         required: false,
     },
+    user: {
+        type: String,
+        required: false,
+    }
 });
 
 const Hardware = mongoose.model('Hardware', trackerSchema);

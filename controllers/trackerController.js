@@ -101,7 +101,15 @@ const tracker_delete_settings = (req, res) => {
 }
 
 const tracker_software_create = (req, res) => {
-    res.render('software_create', { title: "Create"})
+    User.find()
+        .then(uresult => {
+            console.log(uresult);
+            Hardware.find()
+                .then(result => {
+                    console.log(result)
+                    res.render('software_create', { title: "Create", users: uresult, tracker: result })
+                })
+        })
 }
 
 const tracker_software_create_post = (req, res) => {
@@ -116,7 +124,11 @@ const tracker_software_create_post = (req, res) => {
 }
 
 const tracker_hardware_create = (req, res) => {
-    res.render('hardware_create', { title: "Create"})
+    User.find().sort({ username: +1 })
+        .then(result => {
+            console.log(result);
+            res.render('hardware_create', { title: "Create", users: result })
+        })
 }
 
 const tracker_hardware_create_post = (req, res) => {

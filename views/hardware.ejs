@@ -39,10 +39,11 @@
                         <tr class="header" id="head_line">
                             <th data-sort="number" class="row_1_head">Inventurnummer</a></th>
                             <th data-sort="string" class="row_2_head">Name</a></th>
-                            <th data-sort="date" class="row_3_head">Kaufdatum</a></th>
-                            <th data-sort="date" class="row_4_head">Garantie bis</a></th>
-                            <th data-sort="string" class="row_6_head_hardware">Information</th>
-                            <th class="row_7_head_hardware">Optionen</th>
+                            <th data-sort="date" class="row_4_head">Kaufdatum</a></th>
+                            <th data-sort="date" class="row_5_head">Garantie bis</a></th>
+                            <th data-sort="string" class="row_6_head">Benutzer</a></th>
+                            <th data-sort="string" class="row_7_head_hardware">Information</th>
+                            <th class="row_8_head_hardware">Optionen</th>
                         </tr>
                     </thead>
 
@@ -65,10 +66,11 @@
 
                                     <td class="row_1_body"><%= tracker.inventory %></td>
                                     <td class="row_2_body"><%= tracker.name %></td>
-                                    <td class="row_3_body"><%= buyString %></td>
-                                    <td class="row_4_body"><%= warrentyString %></td>
+                                    <td class="row_4_body"><%= buyString %></td>
+                                    <td class="row_5_body"><%= warrentyString %></td>
+                                    <td class="row_6_body"><%= tracker.user %></td>
                                     <td data-tooltip="<%= tracker.notes %>" data-tooltip-location="right" class="row_6_body_hardware"><%= tracker.info %></td> 
-                                    <td id="row_7_body" class="trigger_popup_fricc"><a href="/hardware/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
+                                    <td id="row_9_body" class="trigger_popup_fricc"><a href="/hardware/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
                                 </tr>
 
                             
@@ -91,7 +93,7 @@
         <div class="popup-frame">
             <div class="popupCloseButton">&times;</div>
             <p></p>
-            <iframe name="iframe_a" height="500px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+            <iframe name="iframe_a" height="750px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
         </div>
     </div>
 
