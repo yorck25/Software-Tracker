@@ -86,10 +86,8 @@ exports.signin = (req, res) => {
                 user.password
             );
             if (!passwordIsValid) {
-                return res.status(401).send({
-                    accessToken: null,
-                    message: "Falsches Passwort"
-                });
+                res.render('login', { title: 'Login', message: "Falsches Passwort"})
+                return 
             }
             var token = jwt.sign({ id: user.id }, config.secret, {
                 expiresIn: 86400

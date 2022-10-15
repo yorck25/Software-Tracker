@@ -11,7 +11,7 @@ verifyToken = (req, res, next) => {
     }
     jwt.verify(token, config.secret, (err, decoded) => {
         if (err) {
-            return res.status(401).send({ message: "Nicht autorisiert" });
+            return res.redirect('login');
         }
         req.userId = decoded.id;
         next();

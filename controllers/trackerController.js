@@ -32,7 +32,11 @@ const tracker_software_edit = (req, res) => {
         Software.findById(id)
             .then(result => {
                 console.log(result.name)
-                res.render('software_edit', { title: "Edit", tracker: result })
+                User.find()
+                    .then(uresult => {
+                        console.log(uresult)
+                        res.render('software_edit', { title: "Edit", users: uresult, tracker: result })
+                    })
             })
 }
 
