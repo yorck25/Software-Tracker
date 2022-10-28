@@ -6,12 +6,20 @@ const User = require('../models/user.models');
 const tracker_software = (req, res) => {
     Software.find().sort({ end: +1 })
         .then(result => {
-            console.log(result);
-            res.render('software', { title: "Software", trackers: result });
+            console.log(result)
+            Hardware.find()
+                .then(hresult => {
+                    console.log(hresult)
+                    User.find()
+                        .then(uresult => {
+                            res.render('software', { title: "Software", trackers: result, htrackers: hresult, utrackers: uresult });
+                        })
+                    
+                })
         })
 }
 
-const tracker_settings = (req, res) => {
+const tracker_users = (req, res) => {
     User.find().sort({ username: +1 })
         .then(result => {
             console.log(result);
@@ -22,8 +30,11 @@ const tracker_settings = (req, res) => {
 const tracker_hardware = (req, res) => {
     Hardware.find().sort({ warrenty: +1 })
         .then(result => {
-            console.log(result);
-            res.render('hardware', { title: "Hardware", trackers: result });
+            console.log(result)
+            User.find()
+                .then(uresult => {
+                    res.render('hardware', { title: "Hardware", trackers: result, utrackers: uresult });
+                })
         })
 }
 
@@ -35,7 +46,11 @@ const tracker_software_edit = (req, res) => {
                 User.find()
                     .then(uresult => {
                         console.log(uresult)
-                        res.render('software_edit', { title: "Edit", users: uresult, tracker: result })
+                        Hardware.find()
+                            .then(hresult => {
+                                res.render('software_edit', { title: "Edit", users: uresult, tracker: result, htracker: hresult })
+                            })
+                        
                     })
             })
 }
@@ -45,7 +60,20 @@ const tracker_hardware_edit = (req, res) => {
     Hardware.findById(id)
         .then(result => {
             console.log(result.name)
-            res.render('hardware_edit', { title: "Edit", tracker: result })
+            User.find()
+                .then(uresult => {
+                    console.log(uresult)
+                    res.render('hardware_edit', { title: "Edit", users: uresult, tracker: result })
+                })
+        })
+}
+
+const tracker_users_edit = (req, res) => {
+    const id = req.params.id;
+    User.findById(id)
+        .then(result => {
+            console.log(result.name)
+            res.render('users_edit', { title: "Edit", user: result })
         })
 }
 
@@ -65,6 +93,17 @@ const tracker_hardware_edit_post = (req, res) => {
     Hardware.findByIdAndUpdate(id, req.body)
         .then(result => {
             res.json({ redirect: '/hardware' })
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+const tracker_users_edit_post = (req, res) => {
+    const id = req.params.id;
+    User.findByIdAndUpdate(id, req.body)
+        .then(result => {
+            res.json({ redirect: '/users' })
         })
         .catch(err => {
             console.log(err);
@@ -93,11 +132,11 @@ const tracker_delete_hardware = (req, res) => {
         });
 }
 
-const tracker_delete_settings = (req, res) => {
+const tracker_delete_users = (req, res) => {
     const id = req.params.id;
     User.findByIdAndDelete(id)
         .then(result => {
-            res.json({ redirect: '/settings' });
+            res.json({ redirect: '/users' });
         })
         .catch(err => {
             console.log(err);
@@ -156,15 +195,17 @@ const register = (req, res) => {
 
 module.exports = {
     tracker_hardware,
-    tracker_settings,
+    tracker_users,
     tracker_software,
     tracker_software_edit,
     tracker_hardware_edit,
+    tracker_users_edit,
     tracker_software_edit_post,
     tracker_hardware_edit_post,
+    tracker_users_edit_post,
     tracker_delete_software,
     tracker_delete_hardware,
-    tracker_delete_settings,
+    tracker_delete_users,
     tracker_software_create,
     tracker_software_create_post,
     tracker_hardware_create,

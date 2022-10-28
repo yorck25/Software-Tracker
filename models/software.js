@@ -31,11 +31,11 @@ const trackerSchema = new Schema({
         required: false,
     },
     user: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: false,
     },
     hardware: {
-        type: Number,
+        type: Schema.Types.ObjectId,
         required: false,
     }
 });

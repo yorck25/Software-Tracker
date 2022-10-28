@@ -24,11 +24,11 @@
                 <div class="container">                
                     <div class="dropdown">
                         <div class="select">
-                        <span>Kategorie </span>
-                        <span style="float: right">⮟</span>
+                        <span><%= tracker.category %> </span>
+                        <T style="float: right">⮟</T>
                         <i class="fa fa-chevron-left"></i>
                         </div>
-                        <input type="hidden" name="category">
+                        <input type="hidden" name="category" value="<%= tracker.category %>">
                         <ul class="dropdown-menu">
                             <li id="Microsoft">Microsoft</li>
                             <li id="Adobe">Adobe</li>
@@ -41,11 +41,11 @@
                 <div class="container">                
                     <div class="dropdown">
                         <div class="select">
-                        <span>User </span>
-                        <span style="float: right">⮟</span>
+                        <span><%= tracker.user %> </span>
+                        <T style="float: right">⮟</T>
                         <i class="fa fa-chevron-left"></i>
                         </div>
-                        <input type="hidden" name="user">
+                        <input type="hidden" name="user" value="<%= tracker.user %>">
                         <ul class="dropdown-menu">
                         <% if (users.length > 0) { %>
                             <% users.forEach(user => { %>
@@ -60,15 +60,15 @@
                 <div class="container">                
                     <div class="dropdown">
                         <div class="select">
-                        <span>Hardware - Inventurnummer </span>
-                        <span style="float: right">⮟</span>
+                        <span><%= tracker.hardware %></span>
+                        <T style="float: right">⮟</T>
                         <i class="fa fa-chevron-left"></i>
                         </div>
-                        <input type="hidden" name="hardware">
+                        <input type="hidden" name="hardware" value="<%= tracker.hardware %>">
                         <ul class="dropdown-menu">
-                        <% if (tracker.length > 0) { %>
-                            <% tracker.forEach(tracker => { %>
-                                <li id="<%= tracker.inventory %>"><%= tracker.inventory %></li>
+                        <% if (htracker.length > 0) { %>
+                            <% htracker.forEach(htracker => { %>
+                                <li id="<%= htracker.inventory %>"><%= htracker.inventory %></li>
                             <% }) %> 
                         <% } %>
                         </ul>
@@ -76,7 +76,6 @@
                 </div>
             </li>
                    
-            <li><input placeholder="Kategorie: " type="text" name="category" value="<%= tracker.category %>" calss="edit_input" required class="edit_input_category"></li>
             <li><input placeholder="Name: " type="text" name="name" value="<%= tracker.name %>" calss="edit_input" required class="edit_input_name"></li>   
             <li><input placeholder="Startpunkt: " type="date" id="start" name="start" value="<%= startString %>" calss="edit_input" class="edit_input"></li>    
             <li><input placeholder="Ablaufsdatum: " type="date" id="end" name="end" value="<%= endString %>"  calss="edit_input" class="edit_input"></li>   
@@ -93,6 +92,26 @@
                 
         </ul>
     </form>
+
+
+    <script>
+        /*Dropdown Menu*/
+        $('.dropdown').click(function () {
+            $(this).attr('tabindex', 1).focus();
+            $(this).toggleClass('active');
+            $(this).find('.dropdown-menu').slideToggle(300);
+        });
+        $('.dropdown').focusout(function () {
+            $(this).removeClass('active');
+            $(this).find('.dropdown-menu').slideUp(300);
+        });
+        $('.dropdown .dropdown-menu li').click(function () {
+            $(this).parents('.dropdown').find('span').text($(this).text());
+            $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
+        });
+        /*End Dropdown Menu*/
+
+    </script>
 
     <script>
         const sender = document.querySelector('a.btnEdit');

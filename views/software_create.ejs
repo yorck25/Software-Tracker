@@ -11,8 +11,8 @@
                 <div class="container">                
                     <div class="dropdown">
                         <div class="select">
-                        <span>Kategorie </span>
-                        <span style="float: right">⮟</span>
+                        <span class=".span">Kategorie </span>
+                        <T style="float: right">⮟</T>
                         <i class="fa fa-chevron-left"></i>
                         </div>
                         <input type="hidden" name="category">
@@ -28,15 +28,15 @@
                 <div class="container">                
                     <div class="dropdown">
                         <div class="select">
-                        <span>User </span>
-                        <span style="float: right">⮟</span>
+                        <span class=".span">User </span>
+                        <T style="float: right">⮟</T>
                         <i class="fa fa-chevron-left"></i>
                         </div>
                         <input type="hidden" name="user">
                         <ul class="dropdown-menu">
                         <% if (users.length > 0) { %>
                             <% users.forEach(user => { %>
-                                <li id="<%= user.username %>"><%= user.username %></li>
+                                <li id="<%= user._id %>"><%= user.username %></li>
                             <% }) %> 
                         <% } %>
                         </ul>
@@ -47,15 +47,15 @@
                 <div class="container">                
                     <div class="dropdown">
                         <div class="select">
-                        <span>Hardware - Inventurnummer </span>
-                        <span style="float: right">⮟</span>
+                        <span class=".span">Hardware - Inventurnummer </span>
+                        <T style="float: right">⮟</T>
                         <i class="fa fa-chevron-left"></i>
                         </div>
                         <input type="hidden" name="hardware">
                         <ul class="dropdown-menu">
                         <% if (tracker.length > 0) { %>
                             <% tracker.forEach(tracker => { %>
-                                <li id="<%= tracker.inventory %>"><%= tracker.inventory %></li>
+                                <li id="<%= tracker._id %>"><%= tracker.inventory %></li>
                             <% }) %> 
                         <% } %>
                         </ul>
@@ -91,10 +91,6 @@
         });
     /*End Dropdown Menu*/
 
-
-    $('.dropdown-menu li').click(function () {
-    var input = '<strong>' + $(this).parents('.dropdown').find('input').val() + '</strong>'
-    }); 
 </script>
 
 

@@ -14,7 +14,7 @@
 
         <div style="height: 65px; display: flex; justify-content: flex-end;" id="category_head">
         
-            <div style="width: 40%;" class="trigger_popup_fricc">
+            <div style="width: 40%;">
                 <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search users.." title="Type in a user">
             </div>
         </div>
@@ -28,7 +28,7 @@
                             <th data-sort="string" class="row_2_head">E-Mail</a></th>
                             <th data-sort="int" class="row_3_head">Telefonnummer</a></th>
                             <th class="row_4_head_users">Password-Hash</a></th>
-                            <th class="row_7_head">Nutzer entfernen</a></th>
+                            <th class="row_7_head">Nutzer bearbeiten</a></th>
 
                         </tr>
                     </thead>
@@ -42,7 +42,7 @@
                                     <td class="row_2_body"><%= user.mail %></td>
                                     <td class="row_3_body"><%= user.phone %></td>
                                     <td class="row_4_body_users"><%= user.password %></td>
-                                    <td id="row_7_body"><a id="delete" class="delete" data-doc="<%= user._id %>"><img src="/img/icons/mull.png" alt="Nutzer entfernen"></a></td> 
+                                    <td id="row_9_body" class="trigger_popup_fricc"><a href="/users/<%= user._id %>" target="iframe_a" ><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td> 
                                 </tr>
 
 
@@ -56,21 +56,31 @@
       
     </section>
 
+    <div class="hover_bkgr_fricc">
+        <span class="helper"></span>
+        <div class="popup-frame">
+            <div class="popupCloseButton">&times;</div>
+            <p></p>
+            <iframe name="iframe_a" height="750px" width="100%" title="Iframe Example" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+        </div>
+    </div>
+
     <script>
-        const test = document.querySelectorAll('a.delete');
-        test.forEach(element => {
-            element.addEventListener('click', (e) => {
-                if (confirm("Diesen Nutzer wirklich löschen?")) {
-                    const endpoint = `/settings/${element.dataset.doc}`;
-                    fetch(endpoint, {
-                        method: 'DELETE',
-                    })
-                        .then(response => response.json())
-                        .then(data => top.location.href = data.redirect)
-                        .catch(err => console.log(err));
-                }
-            })
-        
+
+
+        $(window).on('load', function () {
+            $(".trigger_popup_fricc").click(function () {
+                $('.hover_bkgr_fricc').show();
+            });
+            $('.hover_bkgr_fricc').click(function () {
+                $('.hover_bkgr_fricc').hide();
+            });
+            $('.popupCloseButton').click(function () {
+                $('.hover_bkgr_fricc').hide();
+            });
+            $('.btnEdit').click(function () {
+                $('.hover_bkgr_fricc').hide();
+            });
         });
 
     </script>

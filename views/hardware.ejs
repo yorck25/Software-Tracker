@@ -68,8 +68,26 @@
                                     <td class="row_2_body"><%= tracker.name %></td>
                                     <td class="row_4_body"><%= buyString %></td>
                                     <td class="row_5_body"><%= warrentyString %></td>
-                                    <td class="row_6_body"><%= tracker.user %></td>
+                                    <td class="row_6_body">
+                                        <% console.log("utrackers length: " + utrackers.length) %>
+                                            <% if (utrackers.length > 0) { %>
+                                                <% utrackers.forEach(utracker => { %>
+                                                <% console.log("utracker id: " + utracker._id) %>
+                                                <% console.log("tracker user: " + tracker.user) %>
+                                                <% console.log(utracker._id == tracker.user) %>
+                                                <% if (String(utracker._id) == String(tracker.user)) { %> 
+                                                    <% var use = utracker.username %>
+                                                <% } else { %>
+                                                    <% var use = "" %>
+                                                <% } %>
+                                                <% console.log("test for use" + use) %>
+                                                <%= use %>
+                                                <% }) %>
+                                            <% } %>
+                                    </td>
                                     <td data-tooltip="<%= tracker.notes %>" data-tooltip-location="right" class="row_6_body_hardware"><%= tracker.info %></td> 
+                                    <td style="display: none;"><%= tracker.notes %></td>
+                                    <td style="display: none;"><%= tracker.memo %></td>
                                     <td id="row_9_body" class="trigger_popup_fricc"><a href="/hardware/<%= tracker._id %>" target="iframe_a"><img src="/img/icons/bearbeiten.png" alt="Bearbeiten"></a></td>
                                 </tr>
 
@@ -120,7 +138,7 @@
 
     <script>
         function myFunction() {
-            var input, filter, table, tr, td1, td2, td3, td4, td5, i, txtValue;
+            var input, filter, table, tr, td1, td2, td3, td4, td5, td6, td7, td8, i, txtValue;
             input = document.getElementById("searchInput");
             filter = input.value.toUpperCase();
             table = document.getElementById("body_table");
@@ -131,17 +149,26 @@
                 td3 = tr[i].getElementsByTagName("td")[2];
                 td4 = tr[i].getElementsByTagName("td")[3];
                 td5 = tr[i].getElementsByTagName("td")[4];
+                td6 = tr[i].getElementsByTagName("td")[5];
+                td7 = tr[i].getElementsByTagName("td")[6];
+                td8 = tr[i].getElementsByTagName("td")[7];
                 if (td1 || td2 || td3 || td4 || td5) {
                     txtValue1 = td1.textContent || td1.innerText;
                     txtValue2 = td2.textContent || td2.innerText;
                     txtValue3 = td3.textContent || td3.innerText;
                     txtValue4 = td4.textContent || td4.innerText;
                     txtValue5 = td5.textContent || td5.innerText;
+                    txtValue6 = td6.textContent || td6.innerText;
+                    txtValue7 = td7.textContent || td7.innerText;
+                    txtValue8 = td8.textContent || td8.innerText;
                     if (txtValue1.toUpperCase().indexOf(filter) > -1 ||
                         txtValue2.toUpperCase().indexOf(filter) > -1 ||
                         txtValue3.toUpperCase().indexOf(filter) > -1 ||
                         txtValue4.toUpperCase().indexOf(filter) > -1 ||
-                        txtValue5.toUpperCase().indexOf(filter) > -1 ) {
+                        txtValue5.toUpperCase().indexOf(filter) > -1 ||
+                        txtValue6.toUpperCase().indexOf(filter) > -1 ||
+                        txtValue7.toUpperCase().indexOf(filter) > -1 ||
+                        txtValue8.toUpperCase().indexOf(filter) > -1 ) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";
